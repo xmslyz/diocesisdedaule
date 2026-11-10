@@ -22,8 +22,8 @@ header { position: sticky; top: 0; z-index: 50; background: #FFFFFF; border-bott
 header .ancho { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 10px; padding-bottom: 10px; }
 .marca { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--oscuro); font-family: 'Roboto Slab', serif; font-weight: 700; font-size: 20px; letter-spacing: 0.04em; }
 .marca img { height: 46px; width: auto; }
-header nav { display: flex; gap: 22px; flex-wrap: wrap; }
-header nav a { text-decoration: none; color: var(--oscuro); padding: 12px 0; }
+header nav { display: flex; gap: 22px; overflow-x: auto; }
+header nav a { text-decoration: none; color: var(--oscuro); padding: 12px 0; white-space: nowrap; }
 header nav a[aria-current] { font-weight: 700; border-bottom: 3px solid var(--oro); }
 h1 { margin: 30px 0 8px; font-weight: 700; font-size: clamp(40px, 7vw, 80px); line-height: 0.98; letter-spacing: -0.025em; color: var(--oscuro); }
 .bajada { margin: 0 0 26px; max-width: 600px; }
@@ -71,6 +71,8 @@ footer span { color: var(--oro); }
     <a class="marca" href="index.html"><img src="img/escudo.png" alt=""> DIÓCESIS DE DAULE</a>
     <nav aria-label="Principal">
       <a href="index.html">Inicio</a>
+      <a href="camino.html">El camino</a>
+      <a href="pastorales.html">Pastorales</a>
       <a href="parroquias.html" aria-current="page">Parroquias</a>
       <a href="agenda.html">Agenda</a>
       <a href="noticias.html">Noticias</a>

@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Sitio en construcción: quitar esta línea cuando se publique oficialmente -->
+<meta name="robots" content="noindex, nofollow">
+<title>Pastorales y movimientos · Diócesis de Daule</title>
+<meta name="description" content="Pastorales, movimientos y obras de la Diócesis de Daule: qué hace cada una y cómo ponerte en contacto.">
+<link rel="icon" href="img/escudo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Slab:wght@500;700&display=swap">
+<style>
+:root { --verde: #0A5C1A; --oscuro: #0C2A14; --oro: #E0B43C; --texto: #2B312C; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: 'Roboto', Arial, sans-serif; color: var(--texto); line-height: 1.5; font-size: 17px; background: #FFFFFF; }
+a { color: var(--verde); }
+a:hover { color: var(--oscuro); }
+.ancho { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+header { position: sticky; top: 0; z-index: 50; background: #FFFFFF; border-bottom: 1px solid #E1E6DE; }
+header .ancho { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 10px; padding-bottom: 10px; }
+.marca { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--oscuro); font-family: 'Roboto Slab', serif; font-weight: 700; font-size: 20px; letter-spacing: 0.04em; flex: none; }
+.marca img { height: 46px; width: auto; }
+header nav { display: flex; gap: 22px; overflow-x: auto; }
+header nav a { text-decoration: none; color: var(--oscuro); padding: 12px 0; white-space: nowrap; }
+header nav a[aria-current] { font-weight: 700; border-bottom: 3px solid var(--oro); }
+h1 { margin: 30px 0 10px; font-weight: 700; font-size: clamp(40px, 7vw, 80px); line-height: 0.98; letter-spacing: -0.025em; color: var(--oscuro); max-width: 900px; }
+.bajada { margin: 0 0 22px; max-width: 640px; font-size: 19px; }
+.indice { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 0 0 10px; list-style: none; }
+.indice a { display: inline-block; text-decoration: none; border: 2px solid var(--oscuro); color: var(--oscuro); font-weight: 500; font-size: 15px; padding: 10px 14px; }
+.indice a:hover { background: var(--oscuro); color: #FFFFFF; }
+h2 { margin: 54px 0 0; padding-bottom: 8px; border-bottom: 2px solid var(--oscuro); font-weight: 700; font-size: clamp(28px, 3.4vw, 42px); letter-spacing: -0.02em; color: var(--oscuro); line-height: 1.05; scroll-margin-top: 90px; }
+.fichas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 56px; }
+.ficha { display: grid; grid-template-columns: 10px minmax(0, 1fr); gap: 0 18px; padding: 22px 0; border-bottom: 1px solid #DCE2DA; scroll-margin-top: 90px; }
+.ficha:target { background: #FBF6E4; box-shadow: 0 0 0 12px #FBF6E4; }
+.ficha h3 { margin: 0 0 4px; font-size: 24px; font-weight: 700; color: var(--oscuro); line-height: 1.15; letter-spacing: -0.01em; }
+.ficha p { margin: 6px 0 0; font-size: 16px; }
+.ficha .que { font-size: 18px; color: var(--oscuro); margin-top: 0; }
+.ficha b { font-weight: 500; color: var(--oscuro); }
+.enl { display: flex; flex-wrap: wrap; gap: 4px 22px; }
+.enl a { font-weight: 500; padding: 8px 0; }
+.sin { font-size: 15px !important; color: #5A635B; font-style: italic; }
+.paso-de { font-size: 14px !important; }
+footer { background: var(--oscuro); color: #FFFFFF; margin-top: 70px; }
+footer p { margin: 0; padding: 30px 0; font-family: 'Roboto Slab', serif; font-weight: 500; font-size: clamp(20px, 3vw, 30px); }
+footer span { color: var(--oro); }
+@media (max-width: 860px) {
+  header nav { gap: 14px; font-size: 14px; }
+  .marca span { display: none; }
+  .fichas { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="ancho">
+    <a class="marca" href="index.html"><img src="img/escudo.png" alt="Diócesis de Daule"> <span>DIÓCESIS DE DAULE</span></a>
+    <nav aria-label="Principal">
+      <a href="index.html">Inicio</a>
+      <a href="camino.html">El camino</a>
+      <a href="pastorales.html" aria-current="page">Pastorales</a>
+      <a href="parroquias.html">Parroquias</a>
+      <a href="agenda.html">Agenda</a>
+      <a href="noticias.html">Noticias</a>
+    </nav>
+  </div>
+</header>
+
+<main class="ancho">
+  <h1>Pastorales y movimientos</h1>
+  <p class="bajada">Cada una tiene su manera de servir y su gente. Aquí está qué hace cada una y cómo encontrarla.</p>
+  <ul class="indice">
+    <li><a href="#pastorales">Pastorales diocesanas</a></li>
+    <li><a href="#movimientos">Movimientos y comunidades</a></li>
+    <li><a href="#obras">Obras e instituciones</a></li>
+  </ul>
+
+  <h2 id="pastorales">Pastorales diocesanas</h2>
+  <div class="fichas">
+<article class="ficha" id="juvenil"><i style="background: #3FA2E0"></i><div>
+<h3>Pastoral Juvenil</h3>
+<p class="que">Los jóvenes de las treinta parroquias, caminando juntos.</p>
+<p><b>Qué hace.</b> Encuentro Juvenil Diocesano en septiembre, encuentros por zonas, Peregrinación Juvenil Diocesana en Cristo Rey y participación en la Jornada Nacional de la Juventud.</p>
+<p class="enl"><a href="https://www.facebook.com/profile.php?id=100087397942473" rel="noopener">Pastoral Juvenil en Facebook</a> <a href="https://www.facebook.com/profile.php?id=61585789840658" rel="noopener">PJ Zona Oeste</a></p>
+<p class="paso-de">En el camino: <a href="camino.html#discipulo">Crece en la fe</a></p>
+</div></article>
+<article class="ficha" id="vocacional"><i style="background: #3FA2E0"></i><div>
+<h3>Pastoral Vocacional</h3>
+<p class="que">Para quien se pregunta qué quiere Dios de su vida.</p>
+<p><b>Qué hace.</b> Semana Vocacional en julio, con seminaristas que visitan los colegios; convivencias; Círculo Betania «Amigos de Jesús»; Colecta Vocacional «Santo Cura de Ars» en agosto.</p>
+<p class="enl"><a href="https://www.facebook.com/PastoralVocacionalDiocesisDeDaule" rel="noopener">Pastoral Vocacional en Facebook</a></p>
+<p class="paso-de">En el camino: <a href="camino.html#discipulo">Crece en la fe</a></p>
+</div></article>
+<article class="ficha" id="catequetica"><i style="background: #3FA2E0"></i><div>
+<h3>Pastoral Catequética</h3>
+<p class="que">La catequesis de niños, jóvenes, adultos y familias, y quienes la sirven.</p>
+<p><b>Qué hace.</b> 2026 es el «Año del Kerigma»: Catequesis Familiar en toda la diócesis, formación mensual de catequistas, retiro e integración por zonas, y el Encuentro Diocesano de Catequistas en octubre.</p>
+<p class="sin">Todavía no tiene página propia. Pregunta en tu parroquia o en la curia.</p>
+<p class="paso-de">En el camino: <a href="camino.html#discipulo">Crece en la fe</a></p>
+</div></article>
+<article class="ficha" id="liturgia"><i style="background: #3FA2E0"></i><div>
+<h3>Pastoral de Liturgia</h3>
+<p class="que">Quienes cuidan que la comunidad celebre bien: coros y cantores, lectores, monaguillos, sacristanes y ministros extraordinarios de la Comunión.</p>
+<p><b>Qué hace.</b> Talleres de formación de coros por zonas, formación de lectores, encuentro de sacristanes y Encuentro Diocesano de Ministros Extraordinarios de la Comunión.</p>
+<p class="enl"><a href="https://www.facebook.com/profile.php?id=61573821064474" rel="noopener">Monaguillos en Facebook</a></p>
+<p class="paso-de">En el camino: <a href="camino.html#discipulo">Crece en la fe</a></p>
+</div></article>
+<article class="ficha" id="familiar"><i style="background: #3FA2E0"></i><div>
+<h3>Pastoral Familiar</h3>
+<p class="que">Acompaña a matrimonios y familias en todas sus etapas.</p>
+<p><b>Qué hace.</b> Encuentros para familias y la Jornada Mundial de los Abuelos y Mayores, cada julio.</p>
+<p class="enl"><a href="https://www.facebook.com/profile.php?id=61586344271446" rel="noopener">Pastoral Familiar en Facebook</a></p>
+<p class="paso-de">En el camino: <a href="camino.html#discipulo">Crece en la fe</a></p>
+</div></article>
+<article class="ficha" id="caritas"><i style="background: #D8321F"></i><div>
+<h3>Pastoral Social Cáritas Daule</h3>
+<p class="que">La caridad organizada de la diócesis: para quien quiere ayudar y para quien necesita ayuda.</p>
+<p><b>Qué hace.</b> Asamblea Diocesana de Cáritas, trabajo con Cáritas de la Costa y respuesta ante emergencias.</p>
+<p class="sin">Todavía no tiene página propia. Pregunta en tu parroquia o en la curia.</p>
+<p class="paso-de">En el camino: <a href="camino.html#mision">Sal a la misión</a></p>
+</div></article>
+<article class="ficha" id="provida"><i style="background: #D8321F"></i><div>
+<h3>Pastoral Pro Vida</h3>
+<p class="que">Oración y servicio por la vida, desde la concepción.</p>
+<p><b>Qué hace.</b> Procesión por la Vida el 25 de marzo, campaña 40 Días por la Vida, oración por los niños no nacidos y Caravana Guadalupana en diciembre.</p>
+<p class="enl"><a href="https://www.facebook.com/profile.php?id=61558733362848" rel="noopener">Provida Daule en Facebook</a> <a href="https://www.facebook.com/profile.php?id=100085596895793" rel="noopener">40 Días por la Vida Daule</a></p>
+<p class="paso-de">En el camino: <a href="camino.html#mision">Sal a la misión</a></p>
+</div></article>
+<article class="ficha" id="omp"><i style="background: #D8321F"></i><div>
+<h3>Obras Misionales Pontificias</h3>
+<p class="que">El lazo de la diócesis con las misiones del mundo entero.</p>
+<p><b>Qué hace.</b> Infancia Misionera y la colecta del DOMUND, cada octubre.</p>
+<p class="enl"><a href="https://www.facebook.com/profile.php?id=100085031750741" rel="noopener">OMP Daule en Facebook</a></p>
+<p class="paso-de">En el camino: <a href="camino.html#mision">Sal a la misión</a></p>
+</div></article>
+<article class="ficha" id="vida-consagrada"><i style="background: #3FA2E0"></i><div>
+<h3>Vida Consagrada</h3>
+<p class="que">Las religiosas y religiosos que sirven en la diócesis (CER Daule).</p>
+<p><b>Qué hace.</b> Encuentros de las comunidades religiosas y convivencias vocacionales para chicas.</p>
+<p class="sin">Todavía no tiene página propia. Pregunta en tu parroquia o en la curia.</p>
+<p class="paso-de">En el camino: <a href="camino.html#discipulo">Crece en la fe</a></p>
+</div></article>
+  </div>
+
+  <h2 id="movimientos">Movimientos y comunidades</h2>
+  <div class="fichas">
+<article class="ficha" id="juan-xxiii"><i style="background: #E0B43C"></i><div>
+<h3>Movimiento Juan XXIII</h3>
+<p class="que">Movimiento de retiros parroquiales, de evangelización y conversión, pensado sobre todo para quienes están lejos de la Iglesia. Su lema: «Juntos con Cristo y María».</p>
+<p><b>Qué hace.</b> Retiros para jóvenes, mujeres y hombres; pastoral matrimonial; «Pequeño Juan» para niños; peregrinación con la Virgen del Carmen en julio; triduo a san Juan XXIII en octubre.</p>
+<p><b>Dónde.</b> Presente en 17 parroquias.</p>
+<p class="enl"><a href="https://www.facebook.com/profile.php?id=100085265420970" rel="noopener">Movimiento Juan XXIII en Facebook</a></p>
+<p class="paso-de">En el camino: <a href="camino.html#conversion">Vuelve a casa</a></p>
+</div></article>
+<article class="ficha" id="emaus"><i style="background: #E0B43C"></i><div>
+<h3>Movimiento Emaús Misiones</h3>
+<p class="que">Laicos que evangelizan con retiros de fin de semana a partir del camino de Emaús (Lc 24). Para mujeres y hombres adultos.</p>
+<p><b>Qué hace.</b> Retiros, vía crucis, Corpus Christi y rosario a la Virgen de Guadalupe el día 12 de cada mes.</p>
+<p><b>Dónde.</b> San Alberto Magno y Santo Tomás Apóstol, en La Aurora.</p>
+<p class="sin">Todavía no tiene página propia. Pregunta en tu parroquia o en la curia.</p>
+<p class="paso-de">En el camino: <a href="camino.html#conversion">Vuelve a casa</a></p>
+</div></article>
+<article class="ficha" id="legion-de-maria"><i style="background: #0A5C1A"></i><div>
+<h3>Legión de María</h3>
+<p class="que">Humildad, servicio y obediencia a Dios siguiendo a María. Comitium «Reina de los Apóstoles».</p>
+<p><b>Qué hace.</b> Reunión el segundo sábado de cada mes, Acies en torno a la Anunciación, procesión mariana y visitas al hogar de ancianos de Daule.</p>
+<p><b>Dónde.</b> Once praesidia: en Balzar, Palestina, Santa Lucía, Daule, La Victoria, Pedro Carbo e Isidro Ayora, con curia en San Alberto Magno.</p>
+<p class="enl"><a href="https://www.facebook.com/profile.php?id=61560699568549" rel="noopener">Legión de María en Facebook</a></p>
+<p class="paso-de">En el camino: <a href="camino.html#encuentro">Encuéntrate con Cristo</a></p>
+</div></article>
+<article class="ficha" id="jarcia"><i style="background: #D8321F"></i><div>
+<h3>Comunidad Misionera Jarcia</h3>
+<p class="que">Comunidad de jóvenes misioneros. Su lema: «Ser más, valer más, para servir mejor».</p>
+<p><b>Qué hace.</b> Misiones en Semana Santa, Pascua Juvenil en la catedral, escuela de formación, fogatas misioneras en los recintos y campamento.</p>
+<p><b>Dónde.</b> Catedral, Santa Lucía y Virgen del Carmen (Banife).</p>
+<p class="enl"><a href="https://www.facebook.com/ComunidadMisioneraJarcia" rel="noopener">Comunidad Misionera Jarcia en Facebook</a></p>
+<p class="paso-de">En el camino: <a href="camino.html#mision">Sal a la misión</a></p>
+</div></article>
+<article class="ficha" id="eucaristica-reparadora"><i style="background: #0A5C1A"></i><div>
+<h3>Familia Eucarística Reparadora</h3>
+<p class="que">Movimiento eucarístico fundado por san Manuel González: «Aunque todos te abandonen… yo, no». Con ramas para adultos, jóvenes y niños.</p>
+<p><b>Qué hace.</b> Talleres eucarísticos: cinco encuentros semanales con adoración.</p>
+<p class="sin">Todavía no tiene página propia. Pregunta en tu parroquia o en la curia.</p>
+<p class="paso-de">En el camino: <a href="camino.html#encuentro">Encuéntrate con Cristo</a></p>
+</div></article>
+<article class="ficha" id="vita-profamilia"><i style="background: #D8321F"></i><div>
+<h3>Fundación Vita Profamilia</h3>
+<p class="que">Fundación para la promoción de la familia, la defensa de la vida y el desarrollo humano.</p>
+<p><b>Qué hace.</b> Acompañamiento a las familias, a partir de una herramienta de autoevaluación familiar.</p>
+<p class="sin">Todavía no tiene página propia. Pregunta en tu parroquia o en la curia.</p>
+<p class="paso-de">En el camino: <a href="camino.html#mision">Sal a la misión</a></p>
+</div></article>
+<article class="ficha" id="familias-misioneras"><i style="background: #D8321F"></i><div>
+<h3>Familias Misioneras</h3>
+<p class="que">Familias que viven y anuncian la fe juntas.</p>
+<p class="sin">Todavía no tiene página propia. Pregunta en tu parroquia o en la curia.</p>
+<p class="paso-de">En el camino: <a href="camino.html#mision">Sal a la misión</a></p>
+</div></article>
+  </div>
+
+  <h2 id="obras">Obras e instituciones</h2>
+  <div class="fichas">
+<article class="ficha" id="santuario-narcisa"><i style="background: #0C2A14"></i><div>
+<h3>Santuario Nacional Santa Narcisa de Jesús</h3>
+<p class="que">El santuario de la patrona de la diócesis, meta de la peregrinación diocesana de diciembre. Nobol.</p>
+<p class="enl"><a href="https://www.facebook.com/santuarionarcisadejesusoficial" rel="noopener">Santuario en Facebook</a> <a href="https://www.facebook.com/fundacion.santa.narcisa" rel="noopener">Fundación Santa Narcisa</a></p>
+</div></article>
+<article class="ficha" id="monasterio-santa-clara"><i style="background: #0C2A14"></i><div>
+<h3>Monasterio Santa Clara de la Divina Eucaristía</h3>
+<p class="que">Las hermanas clarisas: una comunidad que reza por toda la diócesis. Daule.</p>
+<p class="enl"><a href="https://www.facebook.com/monasterio.staclaradaule" rel="noopener">Monasterio en Facebook</a></p>
+</div></article>
+<article class="ficha" id="remedic"><i style="background: #0C2A14"></i><div>
+<h3>Red Médica de la Diócesis de Daule (REMEDIC)</h3>
+<p class="que">Atención de salud al servicio de las comunidades.</p>
+
+</div></article>
+<article class="ficha" id="dispensario-san-francisco"><i style="background: #0C2A14"></i><div>
+<h3>Dispensario San Francisco</h3>
+<p class="que">Dispensario médico. Daule.</p>
+<p class="enl"><a href="https://www.facebook.com/profile.php?id=61565367689069" rel="noopener">Dispensario en Facebook</a></p>
+</div></article>
+<article class="ficha" id="hogar-san-cristobal"><i style="background: #0C2A14"></i><div>
+<h3>Fundación Hogar San Cristóbal</h3>
+<p class="que">Obra social.</p>
+<p class="enl"><a href="https://www.facebook.com/profile.php?id=61581306004312" rel="noopener">Fundación en Facebook</a></p>
+</div></article>
+<article class="ficha" id="san-carlo-acutis"><i style="background: #0C2A14"></i><div>
+<h3>Unidad Educativa San Carlo Acutis</h3>
+<p class="que">Colegio.</p>
+<p class="enl"><a href="https://www.facebook.com/profile.php?id=61584681353525" rel="noopener">Colegio en Facebook</a></p>
+</div></article>
+<article class="ficha" id="radio-san-giovani"><i style="background: #0C2A14"></i><div>
+<h3>Radio San Giovani</h3>
+<p class="que">Transmite la misa y las celebraciones de la diócesis.</p>
+<p class="enl"><a href="https://www.facebook.com/RadioSanGiovani" rel="noopener">Radio San Giovani en Facebook</a></p>
+</div></article>
+  </div>
+</main>
+
+<footer>
+  <div class="ancho"><p>¡Alabado sea Jesucristo! <span>¡Por siempre sea alabado!</span></p></div>
+</footer>
+</body>
+</html>

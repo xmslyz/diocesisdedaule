@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Sitio en construcción: quitar esta línea cuando se publique oficialmente -->
+<meta name="robots" content="noindex, nofollow">
+<title>El camino · Diócesis de Daule</title>
+<meta name="description" content="El camino del discípulo misionero en la Diócesis de Daule: encuentro, conversión, discipulado y misión, con las pastorales y movimientos que acompañan cada paso.">
+<link rel="icon" href="img/escudo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Slab:wght@500;700&display=swap">
+<style>
+:root { --verde: #0A5C1A; --oscuro: #0C2A14; --oro: #E0B43C; --texto: #2B312C; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: 'Roboto', Arial, sans-serif; color: var(--texto); line-height: 1.5; font-size: 17px; background: #FFFFFF; }
+a { color: var(--verde); }
+a:hover { color: var(--oscuro); }
+.ancho { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+header { position: sticky; top: 0; z-index: 50; background: #FFFFFF; border-bottom: 1px solid #E1E6DE; }
+header .ancho { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 10px; padding-bottom: 10px; }
+.marca { flex: none; display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--oscuro); font-family: 'Roboto Slab', serif; font-weight: 700; font-size: 20px; letter-spacing: 0.04em; }
+.marca img { height: 46px; width: auto; }
+header nav { display: flex; gap: 22px; overflow-x: auto; }
+header nav a { text-decoration: none; color: var(--oscuro); padding: 12px 0; white-space: nowrap; }
+header nav a[aria-current] { font-weight: 700; border-bottom: 3px solid var(--oro); }
+h1 { margin: 30px 0 10px; font-weight: 700; font-size: clamp(40px, 7vw, 84px); line-height: 0.98; letter-spacing: -0.025em; color: var(--oscuro); max-width: 900px; }
+.bajada { margin: 0; max-width: 640px; font-size: 19px; }
+.para { margin: 14px 0 0; max-width: 640px; font-family: 'Roboto Slab', serif; font-weight: 500; font-size: 20px; color: var(--verde); }
+.pasos-nav { position: sticky; top: 67px; z-index: 40; background: #FFFFFF; border-bottom: 2px solid var(--oscuro); margin-top: 34px; }
+.pasos-nav ol { list-style: none; margin: 0 auto; padding: 0 24px; max-width: 1200px; display: grid; grid-template-columns: repeat(4, 1fr); }
+.pasos-nav a { display: flex; align-items: center; gap: 10px; padding: 12px 6px 12px 0; text-decoration: none; color: var(--oscuro); font-weight: 500; font-size: 16px; min-height: 48px; }
+.pasos-nav i { flex: none; width: 14px; height: 14px; display: inline-block; }
+.etapa { padding: 64px 0 20px; scroll-margin-top: 110px; }
+.etapa-arriba { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 30px 56px; align-items: center; }
+.etapa.inv .bloque { order: 2; }
+.bloque { display: flex; flex-direction: column; }
+.bloque img { width: 100%; height: 340px; object-fit: cover; display: block; }
+.bloque-texto { padding: 22px 26px 28px; }
+.num { font-weight: 700; font-size: 14px; letter-spacing: .2em; }
+.bloque h2 { margin: 2px 0 6px; font-weight: 700; font-size: clamp(32px, 4vw, 52px); line-height: 1.02; letter-spacing: -0.02em; }
+.bloque p { margin: 0; font-size: 19px; max-width: 520px; }
+.rotulo { margin: 0; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; color: var(--verde); }
+.kerigma { margin: 0 0 6px; padding: 0; list-style: none; counter-reset: k; }
+.kerigma li { counter-increment: k; display: grid; grid-template-columns: 38px 1fr; padding: 9px 0; border-bottom: 1px solid #DCE2DA; font-family: 'Roboto Slab', serif; font-weight: 500; font-size: 20px; color: var(--oscuro); line-height: 1.3; }
+.kerigma li::before { content: counter(k); font-family: 'Roboto', Arial, sans-serif; font-weight: 700; color: var(--verde); }
+.fuente { margin: 0 0 22px; font-size: 14px; }
+.acciones { margin: 0 0 22px; font-family: 'Roboto Slab', serif; font-weight: 500; font-size: 20px; line-height: 1.45; color: var(--oscuro); }
+.paso { border-left: 10px solid; padding: 4px 0 6px 20px; }
+.paso p { margin: 0; }
+.paso-titulo { font-weight: 700; font-size: 28px; letter-spacing: -0.01em; color: var(--oscuro); line-height: 1.15; padding: 2px 0 4px; }
+.boton { display: inline-block; margin-top: 14px; text-decoration: none; background: var(--oscuro); color: #FFFFFF; font-weight: 500; padding: 14px 22px; font-size: 16px; }
+.boton:hover { background: var(--verde); color: #FFFFFF; }
+.quien { margin-top: 38px; padding-bottom: 6px; border-bottom: 2px solid var(--oscuro); }
+.grupos { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 48px; }
+.grupos li { display: grid; grid-template-columns: 8px minmax(0, 1fr) auto; gap: 0 14px; padding: 14px 0; border-bottom: 1px solid #DCE2DA; align-items: center; }
+.grupos i { align-self: stretch; }
+.grupos h3 { margin: 0; font-size: 19px; font-weight: 500; color: var(--oscuro); line-height: 1.25; }
+.grupos h3 a { color: inherit; text-decoration: none; }
+.grupos h3 a:hover { text-decoration: underline; }
+.grupos p { margin: 2px 0 0; font-size: 15px; }
+.grupos a { font-weight: 500; font-size: 15px; padding: 12px 0; white-space: nowrap; }
+.grupos .sin { font-size: 13px; color: #5A635B; max-width: 96px; text-align: right; line-height: 1.25; }
+.cierre { margin-top: 70px; background: var(--oscuro); color: #FFFFFF; }
+.cierre .ancho { padding-top: 46px; padding-bottom: 50px; display: flex; flex-wrap: wrap; gap: 20px 60px; align-items: center; justify-content: space-between; }
+.cierre p { margin: 0; font-family: 'Roboto Slab', serif; font-weight: 500; font-size: clamp(24px, 3.2vw, 40px); line-height: 1.15; max-width: 760px; }
+.cierre span { color: var(--oro); }
+.cierre a { text-decoration: none; background: var(--oro); color: var(--oscuro); font-weight: 500; padding: 15px 24px; }
+@media (max-width: 860px) {
+  header nav { gap: 12px; font-size: 14px; }
+  .marca span { display: none; }
+  .pasos-nav ol { padding: 0 12px; }
+  .pasos-nav a { font-size: 13px; gap: 6px; flex-direction: column; align-items: flex-start; padding: 8px 4px; line-height: 1.2; }
+  .etapa { padding-top: 44px; }
+  .etapa-arriba { grid-template-columns: 1fr; padding: 0; }
+  .etapa.inv .bloque { order: 0; }
+  .bloque img { height: 230px; }
+  .lado { padding: 0 20px; }
+  .grupos { grid-template-columns: 1fr; }
+  .grupos li { grid-template-columns: 8px minmax(0, 1fr); }
+  .grupos a, .grupos .sin { grid-column: 2; padding: 6px 0 0; text-align: left; max-width: none; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="ancho">
+    <a class="marca" href="index.html"><img src="img/escudo.png" alt="Diócesis de Daule"> <span>DIÓCESIS DE DAULE</span></a>
+    <nav aria-label="Principal">
+      <a href="index.html">Inicio</a>
+      <a href="camino.html" aria-current="page">El camino</a>
+      <a href="pastorales.html">Pastorales</a>
+      <a href="parroquias.html">Parroquias</a>
+      <a href="agenda.html">Agenda</a>
+      <a href="noticias.html">Noticias</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="ancho">
+    <h1>Mires donde mires, hay un paso que puedes dar hoy</h1>
+    <p class="bajada">El camino del discípulo misionero tiene cuatro momentos. Nadie empieza por el final, y nadie camina solo: en cada paso hay una comunidad de la diócesis que te acompaña.</p>
+    <p class="para">Para los alejados, los indiferentes, los que buscan sin saberlo.</p>
+  </div>
+
+  <nav class="pasos-nav" aria-label="Los cuatro pasos">
+    <ol>
+      <li><a href="#encuentro"><i style="background: #0A5C1A"></i>Encuéntrate con Cristo</a></li>
+      <li><a href="#conversion"><i style="background: #E0B43C"></i>Vuelve a casa</a></li>
+      <li><a href="#discipulo"><i style="background: #3FA2E0"></i>Crece en la fe</a></li>
+      <li><a href="#mision"><i style="background: #D8321F"></i>Sal a la misión</a></li>
+    </ol>
+  </nav>
+
+<section class="etapa" id="encuentro">
+  <div class="ancho etapa-arriba">
+    <div class="bloque" style="background: #0A5C1A; color: #FFFFFF">
+      <img src="img/corpus-christi.jpg" alt="Custodia con el Santísimo en la procesión de Corpus Christi en Daule">
+      <div class="bloque-texto">
+        <span class="num" aria-hidden="true">01</span>
+        <h2>Encuéntrate con Cristo</h2>
+        <p>Todo empieza por un encuentro, no por una lista de normas.</p>
+      </div>
+    </div>
+    <div class="lado">
+      <ol class="kerigma">
+<li>Dios te ama con amor eterno y personal.</li>
+<li>El pecado ha herido esa relación.</li>
+<li>Jesucristo murió y resucitó por ti.</li>
+<li>Por la fe y la conversión, recibes una vida nueva.</li>
+<li>El Espíritu Santo te llena de poder y te envía a evangelizar.</li>
+</ol>
+<p class="fuente">El kerigma en cinco frases, del folleto diocesano «Iglesia en Salida».</p>
+      <div class="paso" style="border-color: #0A5C1A">
+        <p class="rotulo">Un paso para hoy</p>
+        <p class="paso-titulo">Ve a misa este domingo</p>
+        <p>Busca la parroquia más cercana a tu casa.</p>
+        <a class="boton" href="parroquias.html">Encuentra tu parroquia</a>
+      </div>
+    </div>
+  </div>
+  <div class="ancho">
+    <p class="rotulo quien">Quién te acompaña en este paso</p>
+    <ul class="grupos">
+      <li><i style="background: #0A5C1A"></i><div><h3>Tu parroquia</h3><p>La misa del domingo, la adoración al Santísimo y la comunidad que te recibe.</p></div><a href="parroquias.html">Ver las 30 parroquias</a></li>
+      <li><i style="background: #0A5C1A"></i><div><h3><a href="pastorales.html#eucaristica-reparadora">Familia Eucarística Reparadora</a></h3><p>Talleres eucarísticos: cinco encuentros semanales con adoración. Para adultos, jóvenes y niños.</p></div><a href="pastorales.html#eucaristica-reparadora">Conócela</a></li>
+      <li><i style="background: #0A5C1A"></i><div><h3><a href="pastorales.html#legion-de-maria">Legión de María</a></h3><p>Oración y servicio de la mano de María. Presente en once parroquias de la diócesis.</p></div><a href="pastorales.html#legion-de-maria">Conócela</a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="etapa inv" id="conversion">
+  <div class="ancho etapa-arriba">
+    <div class="bloque" style="background: #E0B43C; color: #0C2A14">
+      <img src="img/catedral.jpg" alt="El Señor de los Milagros en el altar de la catedral de Daule">
+      <div class="bloque-texto">
+        <span class="num" aria-hidden="true">02</span>
+        <h2>Vuelve a casa</h2>
+        <p>Si te alejaste, la puerta sigue abierta. Nadie te va a pedir explicaciones.</p>
+      </div>
+    </div>
+    <div class="lado">
+      
+      <div class="paso" style="border-color: #E0B43C">
+        <p class="rotulo">Un paso para hoy</p>
+        <p class="paso-titulo">Habla con un sacerdote</p>
+        <p>Pide confesarte o simplemente conversar. En tu parroquia te dirán cuándo.</p>
+        <a class="boton" href="parroquias.html">Dónde confesarte</a>
+      </div>
+    </div>
+  </div>
+  <div class="ancho">
+    <p class="rotulo quien">Quién te acompaña en este paso</p>
+    <ul class="grupos">
+      <li><i style="background: #E0B43C"></i><div><h3><a href="pastorales.html#juan-xxiii">Movimiento Juan XXIII</a></h3><p>Retiros para jóvenes, mujeres y hombres, pensados sobre todo para quienes están lejos de la Iglesia. Presente en 17 parroquias.</p></div><a href="pastorales.html#juan-xxiii">Conócela</a></li>
+      <li><i style="background: #E0B43C"></i><div><h3><a href="pastorales.html#emaus">Movimiento Emaús Misiones</a></h3><p>Retiros de fin de semana a partir del camino de Emaús (Lc 24), para mujeres y hombres adultos. En San Alberto Magno y Santo Tomás Apóstol, La Aurora.</p></div><a href="pastorales.html#emaus">Conócela</a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="etapa" id="discipulo">
+  <div class="ancho etapa-arriba">
+    <div class="bloque" style="background: #3FA2E0; color: #0C2A14">
+      <img src="img/catequistas-2.jpg" alt="Cientos de catequistas reunidos en el IV Encuentro Diocesano">
+      <div class="bloque-texto">
+        <span class="num" aria-hidden="true">03</span>
+        <h2>Crece en la fe</h2>
+        <p>La fe se aprende caminando con otros: en la catequesis, en un grupo, en tu familia.</p>
+      </div>
+    </div>
+    <div class="lado">
+      
+      <div class="paso" style="border-color: #3FA2E0">
+        <p class="rotulo">Un paso para hoy</p>
+        <p class="paso-titulo">Pregunta por la catequesis</p>
+        <p>Bautismo, primera comunión, confirmación, matrimonio: en tu parroquia te explican los requisitos.</p>
+        <a class="boton" href="parroquias.html">Ir a tu parroquia</a>
+      </div>
+    </div>
+  </div>
+  <div class="ancho">
+    <p class="rotulo quien">Quién te acompaña en este paso</p>
+    <ul class="grupos">
+      <li><i style="background: #3FA2E0"></i><div><h3><a href="pastorales.html#catequetica">Pastoral Catequética</a></h3><p>2026 es el «Año del Kerigma»: catequesis familiar en toda la diócesis y formación mensual de catequistas.</p></div><a href="pastorales.html#catequetica">Conócela</a></li>
+      <li><i style="background: #3FA2E0"></i><div><h3><a href="pastorales.html#juvenil">Pastoral Juvenil</a></h3><p>Encuentro Juvenil Diocesano, encuentros por zonas y la Peregrinación Juvenil de Cristo Rey.</p></div><a href="pastorales.html#juvenil">Conócela</a></li>
+      <li><i style="background: #3FA2E0"></i><div><h3><a href="pastorales.html#jarcia">Comunidad Misionera Jarcia</a></h3><p>Comunidad de jóvenes misioneros: «Ser más, valer más, para servir mejor». En la catedral y en Santa Lucía.</p></div><a href="pastorales.html#jarcia">Conócela</a></li>
+      <li><i style="background: #3FA2E0"></i><div><h3><a href="pastorales.html#familiar">Pastoral Familiar</a></h3><p>Encuentros para matrimonios y familias, y la Jornada de los Abuelos y Mayores.</p></div><a href="pastorales.html#familiar">Conócela</a></li>
+      <li><i style="background: #3FA2E0"></i><div><h3><a href="pastorales.html#liturgia">Pastoral de Liturgia</a></h3><p>Coros y cantores, lectores, monaguillos, sacristanes y ministros extraordinarios de la Comunión.</p></div><a href="pastorales.html#liturgia">Conócela</a></li>
+      <li><i style="background: #3FA2E0"></i><div><h3><a href="pastorales.html#vocacional">Pastoral Vocacional</a></h3><p>Semana Vocacional, convivencias y el Círculo Betania para quien se pregunta por su vocación.</p></div><a href="pastorales.html#vocacional">Conócela</a></li>
+      <li><i style="background: #3FA2E0"></i><div><h3><a href="pastorales.html#vida-consagrada">Vida Consagrada</a></h3><p>Las religiosas de la diócesis y sus convivencias vocacionales para chicas.</p></div><a href="pastorales.html#vida-consagrada">Conócela</a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="etapa inv" id="mision">
+  <div class="ancho etapa-arriba">
+    <div class="bloque" style="background: #D8321F; color: #FFFFFF">
+      <img src="img/caritas.jpg" alt="Voluntarias de Cáritas Daule con chalecos rojos">
+      <div class="bloque-texto">
+        <span class="num" aria-hidden="true">04</span>
+        <h2>Sal a la misión</h2>
+        <p>Lo recibido se comparte. El discípulo se vuelve misionero.</p>
+      </div>
+    </div>
+    <div class="lado">
+      <p class="acciones">Misiones en recintos y periferias · visitas a enfermos y ancianos · escuelas de evangelización · misas en los sectores · procesiones y caminatas.</p>
+      <div class="paso" style="border-color: #D8321F">
+        <p class="rotulo">Un paso para hoy</p>
+        <p class="paso-titulo">Ofrece tu tiempo</p>
+        <p>Di en tu parroquia qué sabes hacer. Siempre hace falta alguien.</p>
+        <a class="boton" href="parroquias.html">Hablar con tu parroquia</a>
+      </div>
+    </div>
+  </div>
+  <div class="ancho">
+    <p class="rotulo quien">Quién te acompaña en este paso</p>
+    <ul class="grupos">
+      <li><i style="background: #D8321F"></i><div><h3><a href="pastorales.html#caritas">Cáritas Daule</a></h3><p>La caridad organizada de la diócesis. Para quien quiere ayudar y para quien necesita ayuda.</p></div><a href="pastorales.html#caritas">Conócela</a></li>
+      <li><i style="background: #D8321F"></i><div><h3><a href="pastorales.html#omp">Obras Misionales Pontificias</a></h3><p>Infancia Misionera y la colecta del DOMUND por las misiones del mundo.</p></div><a href="pastorales.html#omp">Conócela</a></li>
+      <li><i style="background: #D8321F"></i><div><h3><a href="pastorales.html#provida">Pastoral Pro Vida</a></h3><p>Procesión por la Vida en la Anunciación, 40 Días por la Vida y oración por los no nacidos.</p></div><a href="pastorales.html#provida">Conócela</a></li>
+      <li><i style="background: #D8321F"></i><div><h3><a href="pastorales.html#jarcia">Misiones de Jarcia</a></h3><p>Jóvenes que salen de misión en Semana Santa y llevan fogatas misioneras a los recintos.</p></div><a href="pastorales.html#jarcia">Conócela</a></li>
+      <li><i style="background: #D8321F"></i><div><h3><a href="pastorales.html#vita-profamilia">Fundación Vita Profamilia</a></h3><p>Acompañamiento a las familias y defensa de la vida.</p></div><a href="pastorales.html#vita-profamilia">Conócela</a></li>
+      <li><i style="background: #D8321F"></i><div><h3><a href="pastorales.html#remedic">Red Médica de la Diócesis (REMEDIC)</a></h3><p>Atención de salud al servicio de las comunidades.</p></div><a href="pastorales.html#remedic">Conócela</a></li>
+    </ul>
+  </div>
+</section>
+
+  <div class="cierre">
+    <div class="ancho">
+      <p>¿No sabes por dónde empezar? <span>Empieza por tu parroquia.</span></p>
+      <span style="display: flex; flex-wrap: wrap; gap: 12px"><a href="parroquias.html">Encuentra tu parroquia</a><a href="pastorales.html" style="background: transparent; color: #FFFFFF; border: 2px solid #FFFFFF">Todas las pastorales y movimientos</a></span>
+    </div>
+  </div>
+</main>
+</body>
+</html>
