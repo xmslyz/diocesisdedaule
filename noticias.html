@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Sitio en construcción: quitar esta línea cuando se publique oficialmente -->
+<meta name="robots" content="noindex, nofollow">
+<title>Noticias · Diócesis de Daule</title>
+<link rel="icon" href="img/escudo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Slab:wght@500;700&display=swap">
+<style>
+:root { --verde: #0A5C1A; --oscuro: #0C2A14; --oro: #E0B43C; --texto: #2B312C; }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: 'Roboto', Arial, sans-serif; color: var(--texto); line-height: 1.5; font-size: 17px; background: #FFFFFF; }
+a { color: var(--verde); }
+a:hover { color: var(--oscuro); }
+.ancho { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+header .ancho { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 14px; padding-bottom: 14px; }
+.marca { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--oscuro); font-family: 'Roboto Slab', serif; font-weight: 700; font-size: 20px; letter-spacing: 0.04em; }
+.marca img { height: 48px; width: auto; }
+.volver { font-weight: 500; padding: 12px 0; }
+h1 { margin: 28px 0 6px; font-weight: 700; font-size: clamp(40px, 7vw, 76px); line-height: 1; letter-spacing: -0.025em; color: var(--oscuro); }
+.bajada { margin: 0 0 34px; max-width: 560px; }
+.nota { display: grid; grid-template-columns: 96px minmax(0, 1fr) 300px; gap: 8px 28px; padding: 26px 0; border-top: 2px solid var(--oscuro); align-items: start; }
+.nota.sin-foto { grid-template-columns: 96px minmax(0, 1fr); }
+.dia { font-weight: 700; font-size: 46px; line-height: 0.95; color: var(--oscuro); }
+.mes { font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; font-size: 14px; color: var(--verde); }
+.texto { margin: 0; white-space: pre-line; overflow-wrap: anywhere; }
+.texto::first-line { font-weight: 500; color: var(--oscuro); font-size: 20px; }
+.mas { display: inline-block; margin-top: 10px; font-weight: 500; padding: 8px 0; }
+.foto { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; background: #EEF1EC; }
+.vacio { border-top: 2px solid var(--oscuro); padding: 30px 0 60px; max-width: 560px; }
+footer { background: var(--oscuro); color: #FFFFFF; margin-top: 40px; }
+footer p { margin: 0; padding: 30px 0; font-family: 'Roboto Slab', serif; font-weight: 500; font-size: clamp(20px, 3vw, 30px); }
+footer span { color: var(--oro); }
+@media (max-width: 760px) {
+  .nota, .nota.sin-foto { grid-template-columns: 64px minmax(0, 1fr); gap: 6px 16px; padding: 20px 0; }
+  .dia { font-size: 34px; }
+  .foto { grid-column: 1 / -1; margin-top: 8px; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="ancho">
+    <a class="marca" href="index.html"><img src="img/escudo.png" alt=""> DIÓCESIS DE DAULE</a>
+    <a class="volver" href="index.html">Inicio</a>
+  </div>
+</header>
+
+<main class="ancho">
+  <h1>Lo que estamos viviendo</h1>
+  <p class="bajada">Lo último de la diócesis, tal como lo contamos en nuestra página de Facebook.</p>
+  <div id="lista"></div>
+</main>
+
+<footer>
+  <div class="ancho"><p>¡Alabado sea Jesucristo! <span>¡Por siempre sea alabado!</span></p></div>
+</footer>
+
+<script src="data/noticias.js"></script>
+<script>
+(function () {
+  var MESES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+  var LARGO = 420;
+  var lista = document.getElementById('lista');
+  var notas = (window.NOTICIAS || []).filter(function (n) { return !n.oculta; });
+
+  function el(tag, clase, texto) {
+    var e = document.createElement(tag);
+    if (clase) e.className = clase;
+    if (texto != null) e.textContent = texto;
+    return e;
+  }
+
+  if (!notas.length) {
+    var v = el('div', 'vacio');
+    v.appendChild(el('p', null, 'Pronto verás aquí las noticias de la diócesis. Mientras tanto, síguenos en Facebook.'));
+    var a = el('a', 'mas', 'Ir a la página de Facebook');
+    a.href = 'https://www.facebook.com/DiocesisdeDaule/';
+    v.appendChild(a);
+    lista.appendChild(v);
+    return;
+  }
+
+  notas.forEach(function (n) {
+    var art = el('article', 'nota');
+    // Fecha en hora de Ecuador
+    var f = new Date(n.fecha);
+    var partes = new Intl.DateTimeFormat('es-EC', { timeZone: 'America/Guayaquil', day: 'numeric', month: 'numeric', year: 'numeric' }).formatToParts(f);
+    var p = {}; partes.forEach(function (x) { p[x.type] = x.value; });
+    var fecha = el('div');
+    fecha.appendChild(el('div', 'dia', p.day));
+    fecha.appendChild(el('div', 'mes', MESES[+p.month - 1] + ' ' + p.year));
+    art.appendChild(fecha);
+
+    var cuerpo = el('div');
+    var t = n.texto || '';
+    var corto = t.length > LARGO ? t.slice(0, t.lastIndexOf(' ', LARGO)) + '…' : t;
+    cuerpo.appendChild(el('p', 'texto', corto));
+    if (n.enlace) {
+      var mas = el('a', 'mas', t.length > LARGO ? 'Seguir leyendo en Facebook' : 'Ver en Facebook');
+      mas.href = n.enlace;
+      cuerpo.appendChild(mas);
+    }
+    art.appendChild(cuerpo);
+
+    if (n.fotos && n.fotos.length) {
+      var img = el('img', 'foto');
+      img.loading = 'lazy';
+      img.alt = '';
+      img.referrerPolicy = 'no-referrer';
+      // Si el enlace de Facebook ya caducó, la foto se retira sin dejar hueco
+      img.onerror = function () { img.remove(); art.classList.add('sin-foto'); };
+      img.src = n.fotos[0];
+      art.appendChild(img);
+    } else {
+      art.classList.add('sin-foto');
+    }
+    lista.appendChild(art);
+  });
+})();
+</script>
+</body>
+</html>

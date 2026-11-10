@@ -1,0 +1,43 @@
+# Trae una vez al día las publicaciones nuevas de la página de Facebook de la diócesis
+# y las guarda en data/noticias.json (texto y enlaces a las fotos; las fotos no se copian). No cuesta nada:
+# GitHub Actions es gratis en repositorios públicos y la Graph API de Facebook también.
+#
+# Para activarlo: Settings → Secrets and variables → Actions → New repository secret
+#   Nombre: FB_PAGE_TOKEN   Valor: token de página (lo genera un administrador de la página)
+# Mientras no exista ese secreto, la tarea termina sin hacer nada.
+name: Noticias desde Facebook
+
+on:
+  schedule:
+    - cron: "17 10 * * *"   # todos los días a las 05:17 de Ecuador
+  workflow_dispatch:         # botón «Run workflow» para lanzarlo a mano
+
+permissions:
+  contents: write
+
+concurrency:
+  group: noticias
+  cancel-in-progress: false
+
+jobs:
+  noticias:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Traer publicaciones
+        env:
+          FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
+        run: python scripts/noticias_facebook.py
+      - name: Guardar cambios
+        run: |
+          git add data/noticias.json data/noticias.js
+          if git diff --cached --quiet; then
+            echo "Sin novedades."
+          else
+            git -c user.name="noticias-bot" -c user.email="noticias-bot@users.noreply.github.com" commit -m "Noticias: actualización diaria desde Facebook"
+            git push
+          fi
