@@ -1,7 +1,7 @@
 /* Hoja del calendario litúrgico (aspecto de la hoja de Manna) */
 .hoja{background:#F6F3EC;font-family:'Palatino Linotype',Palatino,'Book Antiqua','URW Palladio L',Georgia,serif;color:#221E1A}
 .hoja[hidden]{display:none}
-.hoja-caja{max-width:1200px;margin:0 auto;padding:34px 24px 36px;display:grid;grid-template-columns:minmax(210px,auto) minmax(300px,1fr) minmax(0,1.1fr);gap:20px 36px;align-items:center}
+.hoja-caja{max-width:1200px;margin:0 auto;padding:34px 24px 36px;display:grid;grid-template-columns:minmax(210px,auto) minmax(380px,1.15fr) minmax(0,1fr);gap:20px 40px;align-items:center}
 .hoja-dia{text-align:center}
 .hoja-sem{color:#B5191D;font-weight:700;font-size:26px;letter-spacing:.16em;text-transform:uppercase;line-height:1}
 .hoja-num{color:#B5191D;font-weight:700;font-size:112px;line-height:.95}
@@ -24,7 +24,14 @@
 .hoja .hoy .tira-num{box-shadow:inset 0 0 0 2px #A98743}
 .hoja .sel .tira-num,.hoja .sel:hover .tira-num{background:#A98743!important;color:#FFFFFF!important;font-weight:700;box-shadow:none}
 /* Cuadrícula del mes */
-.hoja-mesbox{max-width:560px;margin:0 auto;padding:0 22px 34px}
+/* Agenda: el día a la izquierda, el mes a la derecha */
+.hoja-dos{max-width:1200px;margin:0 auto;padding:38px 24px 40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(340px,500px);gap:30px 64px;align-items:center}
+.hoja-dos .hoja-caja{grid-template-columns:1fr;padding:0;gap:26px;max-width:none}
+.hoja-dos .hoja-nombre{font-size:clamp(26px,2.8vw,38px)}
+.hoja-dos .hoja-deldia{padding:22px 0 0;margin-top:24px;border-top:1.5px solid #D6CEC2;max-width:520px}
+.hoja-mesbox{background:#FFFFFF;border:1.5px solid #D6CEC2;padding:14px 18px 18px}
+.hoja-mesbox .mes-cab{border-top:0;padding-top:0}
+@media (max-width:860px){.hoja-dos{grid-template-columns:1fr;padding:28px 16px 30px;gap:26px}.hoja-mesbox{padding:10px 8px 14px}}
 .mes-cab{display:flex;align-items:center;justify-content:space-between;border-top:1.5px solid #D6CEC2;padding-top:10px}
 .mes-titulo{font-size:22px}.mes-titulo::first-letter{text-transform:uppercase}
 .mes-rejilla{display:grid;grid-template-columns:repeat(7,1fr);text-align:center;padding-top:6px}
@@ -34,7 +41,7 @@
 .mes-boton.hoy .tira-num{box-shadow:inset 0 0 0 2px #A98743}
 .mes-boton.sel .tira-num{background:#A98743!important;color:#FFFFFF!important;font-weight:700;box-shadow:none}
 .mes-vacio{text-align:center;font-style:italic;color:#6B645B;margin:10px 0 0}
-.hoja-deldia{max-width:560px;margin:0 auto;padding:0 22px 30px;text-align:center}
+.hoja-deldia{max-width:560px;margin:0 auto;text-align:center}
 .hoja-deldia p{margin:0}
 .hoja-deldia .hoja-rotulo{padding-bottom:4px}
 .hoja-deldia .acto-dia{font-size:20px}

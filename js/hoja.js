@@ -2,6 +2,7 @@
 // Los datos salen del motor LitCal: data/calendario/daule-AAAA.js (solo hechos del calendario, ningún texto litúrgico).
 //
 //   <aside class="hoja" data-hoja hidden></aside>   hoja del día, con la semana (días y flechas se pueden pulsar)
+//   data-hoja="sin-semana"                          la misma hoja sin la tira de la semana
 //   <div data-mes></div>                            cuadrícula del mes (opcional)
 //
 // Al elegir un día se lanza en document el evento «hoja:dia» con detail = 'AAAA-MM-DD'.
@@ -128,7 +129,7 @@
       });
       nav.appendChild(tira);
       nav.appendChild(boton('hoja-flecha', '›', 'Semana siguiente', function () { elegir(mas(sel, 7), 'sig'); }));
-      caja.appendChild(nav);
+      if (hueco.getAttribute('data-hoja') !== 'sin-semana') caja.appendChild(nav);   // con la cuadrícula del mes al lado, la semana sobra
 
       var cel = el('div', 'hoja-cel');
       cel.setAttribute('aria-live', 'polite');
