@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Sitio en construcción: quitar esta línea cuando se publique oficialmente -->
+<meta name="robots" content="noindex, nofollow">
+<title>Parroquias · Diócesis de Daule</title>
+<meta name="description" content="Las treinta parroquias de la Diócesis de Daule, por zona pastoral y por cantón. Encuentra la tuya.">
+<link rel="icon" href="img/escudo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Slab:wght@500;700&display=swap">
+<style>
+:root { --verde: #0A5C1A; --oscuro: #0C2A14; --oro: #E0B43C; --rojo: #D8321F; --azul: #3FA2E0; --texto: #2B312C; }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: 'Roboto', Arial, sans-serif; color: var(--texto); line-height: 1.5; font-size: 17px; background: #FFFFFF; }
+a { color: var(--verde); }
+a:hover { color: var(--oscuro); }
+.ancho { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+header { position: sticky; top: 0; z-index: 50; background: #FFFFFF; border-bottom: 1px solid #E1E6DE; }
+header .ancho { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 10px; padding-bottom: 10px; }
+.marca { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--oscuro); font-family: 'Roboto Slab', serif; font-weight: 700; font-size: 20px; letter-spacing: 0.04em; }
+.marca img { height: 46px; width: auto; }
+header nav { display: flex; gap: 22px; flex-wrap: wrap; }
+header nav a { text-decoration: none; color: var(--oscuro); padding: 12px 0; }
+header nav a[aria-current] { font-weight: 700; border-bottom: 3px solid var(--oro); }
+h1 { margin: 30px 0 8px; font-weight: 700; font-size: clamp(40px, 7vw, 80px); line-height: 0.98; letter-spacing: -0.025em; color: var(--oscuro); }
+.bajada { margin: 0 0 26px; max-width: 600px; }
+.dos { display: grid; grid-template-columns: minmax(280px, 400px) minmax(0, 1fr); gap: 20px 56px; align-items: start; padding-bottom: 60px; }
+.lado { position: sticky; top: 84px; }
+.mapa path[data-canton] { cursor: pointer; transition: opacity .15s; }
+.mapa.filtrado path[data-canton]:not(.activo) { opacity: .28; }
+.mapa text, .mapa circle { pointer-events: none; }
+.pie-mapa { margin: 8px 0 0; font-size: 14px; }
+.zonas { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; }
+.zonas button { font: 500 15px 'Roboto', Arial, sans-serif; padding: 11px 14px; min-height: 44px; border: 2px solid var(--oscuro); background: #FFFFFF; color: var(--oscuro); cursor: pointer; display: flex; align-items: center; gap: 8px; }
+.zonas button i { width: 13px; height: 13px; display: inline-block; }
+.zonas button[aria-pressed="true"] { background: var(--oscuro); color: #FFFFFF; }
+.buscar { width: 100%; font: 400 17px 'Roboto', Arial, sans-serif; padding: 13px 14px; border: 2px solid var(--oscuro); margin-bottom: 6px; color: var(--oscuro); }
+.buscar::placeholder { color: #6B736C; }
+.cuenta { font-size: 14px; margin: 6px 0 4px; min-height: 22px; }
+.cuenta button { font: inherit; color: var(--verde); background: none; border: 0; padding: 0 0 0 6px; text-decoration: underline; cursor: pointer; }
+.zona-titulo { display: flex; align-items: baseline; gap: 12px; margin: 26px 0 0; padding: 8px 0; border-bottom: 2px solid var(--oscuro); }
+.zona-titulo h2 { margin: 0; font-size: 26px; font-weight: 700; color: var(--oscuro); letter-spacing: -0.01em; }
+.zona-titulo span { font-size: 15px; }
+.parroquia { display: grid; grid-template-columns: 8px minmax(0, 1fr) auto; gap: 4px 16px; padding: 14px 0; border-bottom: 1px solid #DCE2DA; align-items: center; }
+.parroquia .barra { grid-row: 1 / span 2; align-self: stretch; }
+.parroquia h3 { margin: 0; font-size: 20px; font-weight: 500; color: var(--oscuro); line-height: 1.25; }
+.parroquia h3 em { font-style: normal; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; background: var(--oro); color: var(--oscuro); padding: 2px 7px; margin-left: 8px; vertical-align: middle; }
+.parroquia p { margin: 0; grid-column: 2; font-size: 15px; }
+.parroquia a { grid-column: 3; grid-row: 1 / span 2; font-weight: 500; font-size: 15px; padding: 12px 0; white-space: nowrap; }
+.nada { padding: 26px 0; }
+.aviso { margin-top: 30px; padding: 16px 18px; border-left: 8px solid var(--oro); background: #FBF6E4; font-size: 15px; }
+footer { background: var(--oscuro); color: #FFFFFF; }
+footer p { margin: 0; padding: 30px 0; font-family: 'Roboto Slab', serif; font-weight: 500; font-size: clamp(20px, 3vw, 30px); }
+footer span { color: var(--oro); }
+@media (max-width: 860px) {
+  .dos { grid-template-columns: 1fr; }
+  .lado { position: static; max-width: 360px; margin: 0 auto; width: 100%; }
+  header nav { display: none; }
+  .parroquia { grid-template-columns: 8px minmax(0, 1fr); }
+  .parroquia a { grid-column: 2; grid-row: auto; padding: 8px 0 2px; }
+  .parroquia .barra { grid-row: 1 / span 3; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="ancho">
+    <a class="marca" href="index.html"><img src="img/escudo.png" alt=""> DIÓCESIS DE DAULE</a>
+    <nav aria-label="Principal">
+      <a href="index.html">Inicio</a>
+      <a href="parroquias.html" aria-current="page">Parroquias</a>
+      <a href="noticias.html">Noticias</a>
+    </nav>
+  </div>
+</header>
+
+<main class="ancho">
+  <h1>Encuentra tu parroquia</h1>
+  <p class="bajada">Treinta parroquias en doce cantones. Toca tu cantón en el mapa, elige una zona o escribe el nombre de tu parroquia o de tu pueblo.</p>
+
+  <div class="dos">
+    <div class="lado">
+      <div class="mapa" id="mapa">
+<svg viewBox="0 0 460 615" role="img" aria-label="Mapa de los doce cantones de la Diócesis de Daule, coloreados por zona pastoral" style="display: block; width: 100%; height: auto" stroke="#FFFFFF" stroke-width="4" stroke-linejoin="round">
+<path data-canton="Balzar" d="M382.4 138.8 L377.3 142.2 L373.2 138.3 L370.9 142.6 L367.0 142.7 L368.1 147.5 L364.5 156.6 L362.1 154.1 L359.3 158.3 L352.1 156.9 L350.5 163.0 L353.1 166.7 L350.5 170.2 L345.8 169.3 L345.5 170.6 L344.2 168.4 L340.0 171.1 L338.8 175.8 L336.5 175.2 L337.4 181.2 L335.8 182.0 L338.0 183.5 L336.0 185.0 L337.9 188.0 L334.5 190.5 L334.7 196.5 L332.4 195.8 L333.1 194.4 L331.6 195.4 L334.7 199.9 L332.1 201.1 L332.2 203.4 L328.6 202.9 L325.9 206.1 L329.2 207.2 L329.2 211.4 L321.5 215.2 L324.0 217.6 L323.8 221.5 L316.9 223.5 L319.3 224.9 L315.4 228.0 L317.3 229.0 L312.3 241.6 L310.5 241.4 L310.9 247.2 L302.8 253.0 L299.9 258.6 L296.8 258.9 L295.1 262.6 L291.4 264.0 L289.8 266.8 L291.6 267.7 L291.0 271.3 L290.0 272.5 L288.9 271.0 L289.1 274.6 L286.7 275.9 L288.1 276.5 L286.7 277.8 L289.9 277.8 L288.1 280.5 L286.3 279.1 L285.7 282.3 L281.7 283.3 L282.8 287.2 L280.6 286.8 L283.3 289.8 L280.3 289.6 L280.3 294.3 L281.7 294.7 L279.2 296.4 L282.1 297.2 L281.4 299.9 L278.7 300.5 L281.4 305.1 L279.1 305.8 L280.9 310.1 L279.6 312.2 L283.2 314.2 L281.8 315.7 L279.8 314.1 L278.6 317.6 L280.9 317.3 L277.8 319.0 L279.4 322.4 L276.2 324.9 L267.0 321.6 L264.2 328.0 L266.1 330.5 L261.3 334.5 L249.8 334.2 L244.1 327.1 L241.4 328.8 L235.3 323.4 L231.9 325.2 L225.1 320.2 L220.2 321.6 L219.6 315.9 L223.9 313.2 L217.2 304.1 L216.7 300.5 L212.3 295.5 L203.9 297.7 L198.3 293.0 L200.6 289.0 L199.3 285.5 L204.6 282.9 L207.8 274.0 L204.5 269.6 L206.0 264.2 L202.8 256.4 L193.5 254.6 L187.8 249.8 L185.4 253.5 L183.2 252.5 L176.6 258.5 L173.2 264.9 L158.8 278.6 L149.8 276.0 L151.3 263.9 L146.4 256.6 L150.0 242.1 L153.5 237.4 L166.6 236.8 L170.2 239.5 L175.2 237.6 L179.9 234.8 L180.3 229.0 L189.5 221.7 L195.9 220.1 L199.2 214.3 L206.2 215.3 L201.5 212.2 L200.6 204.2 L218.8 194.6 L216.9 178.4 L224.2 175.4 L226.5 172.3 L219.7 158.1 L225.4 146.4 L227.6 151.1 L231.0 152.1 L233.9 149.9 L235.0 151.9 L239.3 150.1 L243.1 152.2 L242.8 155.6 L246.3 158.1 L252.3 153.2 L257.5 153.2 L261.2 150.4 L263.8 144.3 L277.2 133.8 L283.4 131.9 L291.6 123.8 L293.2 119.4 L297.9 126.7 L295.5 129.5 L300.5 138.5 L304.9 138.5 L306.9 142.1 L311.3 142.0 L312.0 144.2 L315.9 142.0 L318.0 135.7 L320.6 136.3 L323.6 141.6 L331.3 137.2 L331.7 139.5 L334.3 139.4 L337.8 135.5 L338.0 131.7 L341.9 129.1 L342.6 123.2 L346.6 123.1 L344.9 126.2 L350.6 131.6 L363.6 126.0 L371.6 131.3 L377.3 138.8 L382.4 138.8 Z" fill="#3FA2E0"></path>
+<path data-canton="Colimes" d="M276.8 324.8 L278.6 330.0 L275.6 331.2 L280.4 332.3 L278.9 333.0 L280.7 335.2 L279.0 338.1 L277.3 337.4 L277.1 339.9 L270.7 340.4 L269.6 344.6 L260.4 345.5 L259.7 352.8 L256.1 359.3 L257.4 364.2 L235.0 363.1 L229.1 370.6 L226.2 380.2 L220.2 374.9 L219.6 381.6 L213.0 380.6 L212.5 386.6 L206.2 386.5 L202.8 383.4 L197.1 387.5 L188.3 386.8 L184.6 389.7 L180.7 385.5 L174.5 384.8 L170.5 379.8 L157.8 390.3 L152.7 388.7 L151.8 386.4 L143.0 391.7 L136.4 391.7 L132.6 394.1 L131.7 391.4 L128.4 397.2 L121.9 399.9 L124.6 407.4 L118.7 411.2 L120.3 401.8 L114.8 396.4 L112.3 390.1 L115.1 384.8 L109.6 379.0 L112.3 378.7 L113.1 375.2 L98.6 375.2 L84.5 352.9 L99.6 351.0 L104.3 351.9 L107.3 355.2 L113.9 355.1 L130.1 342.6 L136.0 334.3 L131.8 330.2 L126.9 329.2 L120.7 317.0 L121.6 312.6 L126.1 308.3 L125.0 292.6 L127.6 289.6 L125.8 283.9 L132.7 280.9 L138.1 283.1 L137.4 278.6 L139.3 276.0 L149.1 275.8 L159.9 278.3 L173.2 264.9 L176.6 258.5 L188.6 249.7 L193.4 254.5 L202.8 256.4 L204.9 258.8 L203.8 262.0 L205.9 265.2 L204.3 268.8 L207.8 274.0 L204.6 282.9 L199.3 285.5 L200.6 289.0 L198.3 293.0 L203.9 297.7 L212.3 295.5 L216.7 300.5 L217.2 304.1 L223.9 313.2 L219.6 315.9 L220.2 321.6 L225.1 320.2 L231.9 325.2 L235.3 323.4 L241.4 328.8 L244.1 327.1 L249.8 334.2 L261.3 334.5 L266.1 330.5 L264.3 327.9 L267.3 321.5 L276.8 324.8 Z" fill="#0A5C1A"></path>
+<path data-canton="Daule" d="M265.1 449.7 L261.3 453.4 L263.4 462.3 L267.1 465.5 L267.4 468.3 L269.8 468.5 L272.2 473.8 L279.4 472.1 L283.2 473.3 L278.9 481.1 L283.9 485.9 L283.0 496.0 L285.2 503.4 L287.7 507.5 L291.9 509.6 L291.2 516.6 L275.0 538.0 L281.8 556.2 L281.0 562.6 L283.8 573.0 L281.9 582.6 L277.1 585.8 L272.1 581.5 L260.8 580.3 L248.2 586.0 L246.8 578.3 L251.1 574.9 L247.2 569.5 L247.6 563.7 L240.4 564.0 L238.3 557.5 L234.5 555.1 L232.4 547.7 L225.6 546.7 L227.4 542.5 L223.6 537.9 L219.5 545.0 L214.4 541.6 L219.5 538.0 L217.1 528.2 L213.8 527.3 L219.0 521.3 L213.8 517.1 L223.6 511.9 L222.8 510.1 L218.0 512.0 L215.7 510.7 L220.3 507.3 L220.8 504.1 L217.2 501.3 L213.7 502.6 L213.4 501.3 L210.5 505.1 L209.7 503.0 L208.4 504.9 L205.6 502.7 L204.6 506.3 L204.3 500.3 L202.4 502.7 L202.4 499.4 L200.5 501.6 L196.7 498.3 L195.0 500.0 L194.5 497.2 L191.1 497.9 L188.4 496.0 L191.1 486.3 L196.1 488.1 L194.3 481.1 L188.5 479.3 L186.2 471.2 L191.8 458.4 L195.4 453.8 L198.5 453.9 L198.6 456.9 L203.8 460.8 L206.4 456.7 L209.8 458.6 L211.1 455.2 L220.0 455.4 L227.0 452.6 L238.4 456.6 L243.6 454.9 L247.4 450.9 L252.1 450.7 L253.8 452.6 L253.9 449.4 L265.1 449.7 Z" fill="#0A5C1A"></path>
+<path data-canton="El Empalme" d="M450.1 59.0 L449.6 69.9 L443.4 72.7 L440.1 79.6 L442.4 82.8 L441.5 88.6 L434.7 91.8 L438.2 104.7 L434.3 112.2 L430.7 112.1 L429.2 115.1 L426.2 113.8 L422.3 116.6 L418.1 114.8 L417.0 116.9 L406.4 119.2 L401.5 117.2 L402.7 116.4 L400.8 114.7 L398.5 115.1 L394.1 121.3 L395.1 122.9 L391.2 124.0 L391.3 126.0 L387.3 128.6 L387.0 135.8 L382.4 138.8 L377.3 138.8 L371.6 131.3 L363.6 126.0 L350.6 131.6 L344.9 126.2 L346.6 123.1 L342.6 123.2 L341.9 129.1 L338.0 131.7 L337.8 135.5 L334.3 139.4 L331.7 139.5 L331.3 137.2 L323.6 141.6 L320.6 136.3 L318.0 135.7 L314.7 142.2 L312.0 144.2 L311.3 142.0 L306.9 142.1 L304.9 138.5 L300.5 138.5 L295.7 129.8 L297.9 126.7 L293.2 119.4 L295.1 111.5 L296.6 108.5 L304.5 108.7 L306.3 106.6 L306.6 100.3 L310.4 99.6 L312.4 95.3 L310.2 89.6 L313.9 86.2 L312.1 79.9 L316.8 74.4 L321.0 76.5 L324.5 75.4 L325.8 60.2 L334.1 52.3 L334.3 48.9 L338.7 47.8 L337.4 44.6 L344.6 30.7 L348.4 29.4 L351.5 31.6 L353.4 27.9 L359.3 31.4 L357.5 39.9 L364.5 35.7 L364.1 38.9 L366.6 39.4 L370.4 37.5 L369.1 34.6 L373.1 33.8 L377.0 39.5 L381.5 36.5 L385.7 29.1 L392.7 27.2 L393.1 25.4 L395.4 26.5 L394.0 18.1 L399.2 19.2 L403.1 15.9 L406.1 18.6 L411.6 13.8 L415.2 14.5 L417.5 11.6 L423.5 12.7 L430.6 9.4 L433.5 14.1 L433.9 9.0 L437.9 8.0 L436.7 13.1 L441.7 19.7 L444.1 15.1 L452.0 9.3 L451.1 16.3 L440.5 44.4 L441.0 48.2 L450.1 59.0 Z" fill="#3FA2E0"></path>
+<path data-canton="Palestina" d="M277.1 339.9 L280.3 340.6 L279.2 347.4 L281.3 346.5 L281.9 350.5 L284.3 349.5 L287.0 351.7 L287.2 357.2 L281.9 359.6 L281.4 366.2 L278.8 368.0 L281.1 371.8 L283.3 372.1 L285.8 382.0 L280.3 388.6 L281.2 393.0 L275.6 397.1 L275.0 399.9 L277.9 407.4 L281.3 407.1 L282.7 409.3 L283.8 414.1 L281.2 421.4 L277.8 424.0 L276.6 420.5 L271.0 422.4 L270.5 419.2 L265.3 420.8 L265.5 414.6 L260.6 412.5 L255.4 415.0 L254.3 412.1 L248.8 418.0 L241.4 414.6 L232.6 416.0 L236.4 410.8 L223.8 401.3 L221.5 391.7 L212.7 386.4 L212.8 380.9 L219.2 382.1 L220.8 374.7 L226.0 380.4 L229.1 370.6 L235.0 363.1 L257.4 364.2 L256.1 359.3 L259.7 352.8 L260.4 345.5 L269.6 344.6 L271.6 339.7 L277.1 339.9 Z" fill="#0A5C1A"></path>
+<path data-canton="Pedro Carbo" d="M149.6 388.9 L141.6 406.3 L140.9 415.0 L143.6 418.5 L138.2 418.4 L140.0 423.2 L137.3 429.4 L138.9 431.4 L143.2 431.3 L143.5 440.5 L156.4 448.7 L157.3 457.4 L161.4 457.6 L161.6 460.6 L155.5 472.6 L150.1 477.2 L147.0 477.3 L150.8 480.4 L146.6 484.9 L148.7 490.1 L147.7 493.3 L145.6 494.4 L140.7 492.1 L137.3 495.4 L130.4 496.8 L121.4 509.5 L121.6 512.4 L114.6 520.7 L112.1 521.1 L107.7 529.6 L95.8 531.6 L96.0 535.8 L97.8 536.2 L94.5 537.8 L99.0 549.7 L96.5 551.7 L98.0 553.1 L96.1 564.4 L98.2 565.4 L98.8 569.0 L96.5 573.7 L97.4 575.9 L95.8 576.2 L97.5 581.8 L93.7 588.6 L94.0 593.6 L88.1 594.2 L83.1 598.8 L77.3 595.4 L72.2 589.7 L72.1 587.5 L75.6 587.0 L75.8 584.8 L62.9 574.3 L61.3 569.7 L56.9 567.4 L55.7 554.3 L44.9 553.3 L41.3 548.8 L33.6 546.6 L23.7 547.3 L20.4 540.1 L13.6 534.9 L10.2 534.9 L12.8 523.1 L16.5 520.2 L14.1 514.4 L15.1 507.9 L20.3 504.0 L22.0 499.7 L18.3 498.6 L14.7 501.3 L9.4 501.5 L8.0 499.8 L13.6 500.0 L13.6 491.5 L10.7 489.3 L18.1 486.9 L15.0 485.5 L16.3 477.5 L25.4 479.1 L26.5 476.1 L24.0 470.1 L17.7 465.6 L21.0 454.7 L30.3 448.1 L33.7 450.1 L36.4 441.0 L47.1 432.9 L51.7 425.1 L61.5 425.6 L59.9 419.0 L65.6 411.2 L65.7 406.2 L81.6 419.0 L86.4 415.8 L79.4 411.1 L85.2 409.9 L101.8 407.9 L105.3 411.3 L108.0 408.5 L118.2 412.3 L120.8 408.6 L124.6 407.4 L121.9 399.9 L128.4 397.2 L130.4 392.0 L132.6 394.1 L149.6 388.9 Z" fill="#E0B43C"></path>
+<path data-canton="Samborondón" d="M374.0 510.8 L377.7 517.7 L383.5 518.5 L384.0 520.4 L382.6 524.1 L368.9 532.0 L375.3 542.6 L368.9 550.9 L377.5 559.1 L374.6 568.9 L340.4 569.6 L339.6 567.5 L283.6 569.6 L281.0 562.6 L281.8 556.2 L275.0 538.0 L291.2 516.6 L291.9 509.6 L295.7 512.6 L297.3 511.2 L302.2 512.8 L301.1 505.6 L310.6 491.3 L327.0 503.7 L327.6 508.6 L330.6 512.2 L344.3 517.6 L344.3 521.6 L348.5 520.5 L352.4 524.7 L352.1 530.2 L357.3 523.4 L371.3 515.3 L374.0 510.8 Z" fill="#D8321F"></path>
+<path data-canton="Santa Lucía" d="M212.7 386.4 L221.5 391.7 L223.8 401.3 L236.4 410.8 L232.3 414.8 L233.9 416.7 L241.4 414.6 L248.8 418.0 L254.3 412.1 L255.4 415.0 L260.6 412.5 L265.5 414.6 L265.3 420.8 L270.6 419.2 L270.9 423.5 L266.4 427.9 L268.0 429.7 L265.6 438.3 L267.2 442.2 L265.9 449.7 L253.9 449.4 L253.8 452.6 L252.1 450.7 L247.4 450.9 L243.6 454.9 L238.4 456.6 L231.2 452.9 L225.6 452.6 L220.0 455.4 L211.1 455.2 L209.5 458.8 L206.4 456.7 L203.3 460.8 L202.3 458.0 L198.6 456.9 L198.5 453.9 L194.5 455.5 L192.6 452.9 L188.2 452.2 L187.5 443.8 L181.6 439.6 L176.7 438.9 L171.9 431.1 L154.3 435.4 L146.8 441.3 L143.8 440.9 L143.2 431.3 L137.4 430.0 L140.0 423.2 L138.2 418.4 L143.6 418.5 L140.7 411.1 L148.8 389.7 L151.1 386.6 L157.8 390.3 L170.5 379.8 L174.5 384.8 L180.7 385.5 L184.6 389.7 L188.3 386.8 L197.1 387.5 L202.8 383.4 L206.2 386.5 L212.7 386.4 Z" fill="#0A5C1A"></path>
+<path data-canton="Salitre" d="M282.5 387.8 L284.2 390.2 L289.7 388.3 L294.9 393.3 L296.1 398.4 L300.4 398.2 L301.7 401.9 L293.6 407.4 L299.4 414.1 L300.2 417.9 L311.6 420.3 L319.0 427.3 L325.9 425.6 L336.7 432.4 L338.5 436.4 L336.5 455.3 L341.1 460.0 L342.0 464.4 L345.2 465.6 L345.9 473.3 L350.3 474.4 L344.6 480.2 L344.7 483.0 L354.8 486.8 L355.3 490.1 L360.2 493.9 L366.1 493.4 L367.0 499.0 L372.4 504.0 L374.0 510.8 L372.4 514.3 L358.0 522.8 L352.1 530.2 L352.4 524.7 L348.5 520.5 L344.3 521.6 L344.3 517.6 L330.6 512.2 L327.6 508.6 L327.0 503.7 L310.6 491.3 L301.1 505.6 L301.8 513.0 L297.3 511.2 L295.7 512.6 L293.6 509.4 L287.9 507.8 L283.0 496.0 L283.9 485.9 L278.9 481.1 L283.1 473.1 L272.2 473.8 L263.4 462.3 L261.3 453.4 L265.9 449.5 L267.2 442.2 L265.6 438.3 L268.0 429.7 L266.4 427.8 L274.8 420.2 L277.2 421.0 L276.9 423.6 L279.0 423.4 L283.8 414.1 L281.9 407.5 L277.9 407.4 L277.7 403.8 L275.1 402.8 L275.6 397.1 L279.8 395.1 L280.3 388.6 L282.5 387.8 Z" fill="#D8321F"></path>
+<path data-canton="Lomas de Sargentillo" d="M194.5 455.5 L186.2 471.3 L188.5 479.3 L194.3 481.1 L196.1 488.1 L191.1 486.3 L188.3 494.2 L191.1 497.9 L195.5 498.6 L192.4 500.5 L189.9 511.7 L181.9 512.9 L179.1 510.2 L176.1 510.9 L172.8 506.9 L165.7 506.5 L163.8 503.8 L160.1 491.0 L164.9 491.4 L167.0 488.8 L166.4 485.1 L170.0 485.0 L176.2 477.0 L174.7 473.3 L178.9 469.7 L174.8 462.7 L176.8 457.8 L182.0 455.3 L184.0 442.5 L187.6 444.0 L188.2 452.2 L192.6 452.9 L194.5 455.5 Z" fill="#E0B43C"></path>
+<path data-canton="Nobol" d="M217.4 544.7 L215.1 550.4 L200.1 554.6 L203.3 562.1 L200.1 564.6 L198.6 572.0 L196.3 571.4 L193.9 573.8 L190.9 572.0 L185.7 574.5 L184.4 573.0 L181.3 578.6 L171.3 579.3 L173.2 574.7 L170.9 565.5 L164.2 564.0 L166.0 553.8 L174.5 550.0 L176.0 542.1 L192.1 507.3 L192.4 500.5 L195.4 500.1 L197.0 498.5 L200.5 501.6 L202.4 499.4 L202.4 502.7 L204.4 500.5 L204.6 506.3 L205.6 502.7 L208.4 504.9 L209.7 503.0 L210.5 505.1 L213.4 501.3 L213.7 502.6 L217.2 501.3 L220.8 504.1 L220.3 507.3 L215.7 510.7 L218.0 512.0 L222.8 510.1 L223.6 511.9 L213.8 517.7 L219.0 521.6 L213.8 527.3 L217.1 528.2 L219.4 536.8 L218.8 539.6 L214.5 541.0 L217.4 544.7 Z" fill="#0A5C1A"></path>
+<path data-canton="Isidro Ayora" d="M184.5 442.3 L181.7 449.1 L183.5 451.8 L182.0 455.3 L176.8 457.8 L174.8 462.7 L178.9 469.7 L174.7 473.3 L176.2 477.0 L170.0 485.0 L166.4 485.1 L167.0 488.8 L164.9 491.4 L160.1 491.0 L165.7 506.5 L172.8 506.9 L176.1 510.9 L179.1 510.2 L181.9 512.9 L189.9 511.8 L183.3 529.4 L176.0 542.1 L174.5 550.0 L166.0 553.8 L164.2 564.0 L170.9 565.5 L173.2 574.7 L171.4 579.4 L162.3 586.3 L159.2 598.2 L153.9 606.5 L150.5 607.7 L146.7 604.7 L136.3 605.3 L121.7 602.6 L108.2 605.0 L99.1 602.9 L94.9 599.5 L93.7 595.0 L93.7 588.6 L97.6 580.7 L95.8 576.2 L97.4 575.9 L97.0 571.7 L98.8 570.9 L98.2 565.4 L96.1 564.4 L98.0 553.0 L96.5 551.7 L99.0 549.7 L94.5 537.8 L97.8 536.2 L96.0 535.8 L95.8 531.6 L107.7 529.6 L112.1 521.1 L114.6 520.7 L121.6 512.4 L121.4 509.5 L130.4 496.8 L137.3 495.4 L140.7 492.1 L145.8 494.4 L147.7 493.3 L146.6 484.9 L150.8 480.4 L147.0 477.3 L150.1 477.2 L155.5 472.6 L161.4 461.4 L161.8 457.9 L157.3 457.4 L156.4 448.7 L153.1 448.1 L151.9 445.0 L146.4 441.4 L153.0 435.9 L170.7 430.7 L176.7 438.9 L179.5 438.6 L184.5 442.3 Z" fill="#E0B43C"></path>
+<text x="262" y="226" text-anchor="middle" stroke="none" fill="#0C2A14" style="font-size: 15px; font-weight: 500">Balzar</text>
+<text x="177" y="339" text-anchor="middle" stroke="none" fill="#FFFFFF" style="font-size: 15px; font-weight: 500">Colimes</text>
+<text x="245" y="513" text-anchor="middle" stroke="none" fill="#FFFFFF" style="font-size: 15px; font-weight: 500">Daule</text>
+<text x="378" y="83" text-anchor="middle" stroke="none" fill="#0C2A14" style="font-size: 15px; font-weight: 500">El Empalme</text>
+<text x="142" y="542" text-anchor="middle" stroke="none" fill="#0C2A14" style="font-size: 15px; font-weight: 500">Isidro Ayora</text>
+<circle cx="180" cy="485" r="10" fill="#FFFFFF" stroke="none"></circle><text x="180" y="489" text-anchor="middle" stroke="none" fill="#0C2A14" style="font-size: 15px; font-weight: 500">1</text>
+<circle cx="195" cy="539" r="10" fill="#FFFFFF" stroke="none"></circle><text x="195" y="544" text-anchor="middle" stroke="none" fill="#0C2A14" style="font-size: 15px; font-weight: 500">2</text>
+<circle cx="256" cy="385" r="10" fill="#FFFFFF" stroke="none"></circle><text x="256" y="389" text-anchor="middle" stroke="none" fill="#0C2A14" style="font-size: 15px; font-weight: 500">3</text>
+<text x="82" y="489" text-anchor="middle" stroke="none" fill="#0C2A14" style="font-size: 15px; font-weight: 500">Pedro Carbo</text>
+<text x="311" y="468" text-anchor="middle" stroke="none" fill="#FFFFFF" style="font-size: 15px; font-weight: 500">Salitre</text>
+<text x="326" y="543" text-anchor="middle" stroke="none" fill="#FFFFFF" style="font-size: 15px; font-weight: 500">Samborondón</text>
+<text x="202" y="425" text-anchor="middle" stroke="none" fill="#FFFFFF" style="font-size: 15px; font-weight: 500">Santa Lucía</text>
+</svg>
+      </div>
+      <p class="pie-mapa">1 Lomas de Sargentillo · 2 Nobol · 3 Palestina</p>
+    </div>
+
+    <div>
+      <div class="zonas" role="group" aria-label="Zona pastoral">
+        <button type="button" data-zona="norte" aria-pressed="false"><i style="background: #3FA2E0"></i>Norte</button>
+        <button type="button" data-zona="centro" aria-pressed="false"><i style="background: #0A5C1A"></i>Centro</button>
+        <button type="button" data-zona="este" aria-pressed="false"><i style="background: #D8321F"></i>Este</button>
+        <button type="button" data-zona="oeste" aria-pressed="false"><i style="background: #E0B43C"></i>Oeste</button>
+      </div>
+      <label for="buscar" style="position: absolute; left: -9999px">Buscar parroquia o lugar</label>
+      <input class="buscar" id="buscar" type="search" placeholder="Buscar: Fátima, Salitre, La Aurora…" autocomplete="off">
+      <p class="cuenta" id="cuenta" aria-live="polite"></p>
+      <div id="lista"></div>
+      <p class="aviso">Los horarios de misa y de despacho parroquial se están reuniendo. Mientras tanto, cada parroquia los publica en su página de Facebook.</p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="ancho"><p>¡Alabado sea Jesucristo! <span>¡Por siempre sea alabado!</span></p></div>
+</footer>
+
+<script src="data/parroquias.js"></script>
+<script>
+(function () {
+  var ZONAS = {
+    norte: ['Zona Norte', 'María Inmaculada', '#3FA2E0'], centro: ['Zona Centro', 'San José', '#0A5C1A'],
+    este: ['Zona Este', 'San Miguel Arcángel', '#D8321F'], oeste: ['Zona Oeste', 'Buen Pastor', '#E0B43C']
+  };
+  var datos = window.PARROQUIAS || [];
+  var lista = document.getElementById('lista'), cuenta = document.getElementById('cuenta');
+  var mapa = document.getElementById('mapa'), buscar = document.getElementById('buscar');
+  var botones = document.querySelectorAll('.zonas button');
+  var cantones = mapa.querySelectorAll('path[data-canton]');
+  var filtro = { zona: null, canton: null, texto: '' };
+
+  function plano(s) { return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
+  function el(tag, clase, texto) {
+    var e = document.createElement(tag);
+    if (clase) e.className = clase;
+    if (texto != null) e.textContent = texto;
+    return e;
+  }
+
+  function pintar() {
+    var q = plano(filtro.texto.trim());
+    var ver = datos.filter(function (p) {
+      return (!filtro.zona || p.zona === filtro.zona) && (!filtro.canton || p.canton === filtro.canton) &&
+        (!q || plano(p.nombre + ' ' + p.lugar).indexOf(q) !== -1);
+    });
+    lista.textContent = '';
+    Object.keys(ZONAS).forEach(function (z) {
+      var deZona = ver.filter(function (p) { return p.zona === z; });
+      if (!deZona.length) return;
+      var t = el('div', 'zona-titulo');
+      t.appendChild(el('h2', null, ZONAS[z][0]));
+      t.appendChild(el('span', null, '«' + ZONAS[z][1] + '»'));
+      lista.appendChild(t);
+      deZona.forEach(function (p) {
+        var a = el('article', 'parroquia');
+        var b = el('div', 'barra'); b.style.background = ZONAS[z][2]; a.appendChild(b);
+        var h = el('h3', null, p.nombre);
+        if (p.nota) h.appendChild(el('em', null, p.nota));
+        a.appendChild(h);
+        a.appendChild(el('p', null, p.lugar + (p.desde ? ' · parroquia desde ' + p.desde : '')));
+        if (p.facebook) {
+          var f = el('a', null, 'Facebook de la parroquia');
+          f.href = p.facebook; f.rel = 'noopener';
+          a.appendChild(f);
+        }
+        lista.appendChild(a);
+      });
+    });
+    if (!ver.length) lista.appendChild(el('p', 'nada', 'No encontramos ninguna parroquia con esa búsqueda. Prueba con el nombre del cantón.'));
+
+    var hayFiltro = filtro.zona || filtro.canton || q;
+    cuenta.textContent = hayFiltro ? ver.length + (ver.length === 1 ? ' parroquia' : ' parroquias') + (filtro.canton ? ' en ' + filtro.canton : '') + '.' : '';
+    if (hayFiltro) {
+      var quitar = el('button', null, 'Ver las 30');
+      quitar.type = 'button';
+      quitar.addEventListener('click', function () { filtro = { zona: null, canton: null, texto: '' }; buscar.value = ''; pintar(); });
+      cuenta.appendChild(quitar);
+    }
+    botones.forEach(function (bt) { bt.setAttribute('aria-pressed', String(bt.dataset.zona === filtro.zona)); });
+    mapa.classList.toggle('filtrado', !!filtro.canton);
+    cantones.forEach(function (c) { c.classList.toggle('activo', c.dataset.canton === filtro.canton); });
+  }
+
+  botones.forEach(function (bt) {
+    bt.addEventListener('click', function () { filtro.zona = filtro.zona === bt.dataset.zona ? null : bt.dataset.zona; filtro.canton = null; pintar(); });
+  });
+  cantones.forEach(function (c) {
+    c.setAttribute('tabindex', '0'); c.setAttribute('role', 'button'); c.setAttribute('aria-label', 'Parroquias de ' + c.dataset.canton);
+    function elegir() { filtro.canton = filtro.canton === c.dataset.canton ? null : c.dataset.canton; filtro.zona = null; pintar(); }
+    c.addEventListener('click', elegir);
+    c.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); elegir(); } });
+  });
+  buscar.addEventListener('input', function () { filtro.texto = buscar.value; pintar(); });
+
+  // parroquias.html?zona=oeste  o  ?canton=Salitre
+  var qs = new URLSearchParams(location.search);
+  if (ZONAS[qs.get('zona')]) filtro.zona = qs.get('zona');
+  if (qs.get('canton')) filtro.canton = qs.get('canton');
+  pintar();
+})();
+</script>
+</body>
+</html>
