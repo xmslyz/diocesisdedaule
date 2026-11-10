@@ -104,7 +104,8 @@ def main():
             nuevas += 1
     for pid, n in por_id.items():
         if pid not in recientes:
-            n["fotos"] = []                      # enlaces ya caducados o a punto de caducar
+            # enlaces de Facebook ya caducados o a punto de caducar; las fotos propias (img/…) se conservan
+            n["fotos"] = [f for f in n.get("fotos", []) if not f.startswith("http")]
 
     todas = sorted(por_id.values(), key=lambda n: n["fecha"], reverse=True)[:MAX_NOTICIAS]
 

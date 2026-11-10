@@ -4,8 +4,8 @@
 // Los actos pasados dejan de mostrarse solos.
 window.AGENDA = [
   { desde: "2026-11-13", hasta: "2026-11-21", titulo: "Novena a Cristo Rey", detalle: "En todas las parroquias de la diócesis." },
-  { desde: "2026-11-28", titulo: "5.ª Peregrinación Juvenil Diocesana", detalle: "Pastoral Juvenil · «Creemos en ti». [LUGAR Y HORA]" },
-  { desde: "2026-12-12", titulo: "Caravana Guadalupana a Daule", detalle: "Pastoral Provida. [RECORRIDO Y HORA]" },
+  { desde: "2026-11-28", titulo: "5.ª Peregrinación Juvenil Diocesana", detalle: "Pastoral Juvenil · «Creemos en ti». Lugar y hora por confirmar." },
+  { desde: "2026-12-12", titulo: "Caravana Guadalupana a Daule", detalle: "Pastoral Provida. Recorrido y hora por confirmar." },
   { desde: "2027-01-25", hasta: "2027-01-27", titulo: "IV Asamblea Diocesana", detalle: "Toda la diócesis evalúa el año y planifica el siguiente." },
   { desde: "2027-02-02", titulo: "Quinto aniversario de la diócesis", detalle: "La Diócesis de Daule fue erigida el 2 de febrero de 2022." }
 ];

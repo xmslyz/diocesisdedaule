@@ -219,6 +219,7 @@ footer span { color: var(--oro); }
   var qs = new URLSearchParams(location.search);
   if (ZONAS[qs.get('zona')]) filtro.zona = qs.get('zona');
   if (qs.get('canton')) filtro.canton = qs.get('canton');
+  if (qs.get('q')) { filtro.texto = qs.get('q'); buscar.value = filtro.texto; }
   pintar();
 })();
 </script>
