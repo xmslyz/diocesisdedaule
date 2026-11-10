@@ -8,7 +8,7 @@ Sitio estático de la Diócesis de Daule (Ecuador). En construcción.
 - `scripts/noticias_facebook.py` + `.github/workflows/noticias.yml` — tarea diaria (gratis) que trae las
   publicaciones nuevas de la página de Facebook: texto y enlaces a las fotos (las fotos no se copian).
   Se activa creando el secreto `FB_PAGE_TOKEN` en Settings → Secrets and variables → Actions.
-  Para ocultar una publicación: añadir `"oculta": true` en su entrada de `data/noticias.json`... y en `data/noticias.js`.
+  Para ocultar una publicación: añadir `"oculta": true` en su entrada de `data/noticias.json` (`noticias.js` se regenera en la siguiente ejecución).
 
 Para verlo en el ordenador: abrir `index.html` con doble clic.
 
