@@ -17,6 +17,11 @@ a{color:#0A5C1A}a:hover{color:#0C2A14}
 img{max-width:100%}
 .solo-movil{display:none}
 @media (max-width: 760px){.solo-pc{display:none}.solo-movil{display:block}}
+html{scroll-behavior:smooth}
+section[id],footer[id],div[id]{scroll-margin-top:92px}
+.arriba{position:fixed;right:18px;bottom:18px;z-index:60;width:52px;height:52px;border:2px solid #0C2A14;background:#E0B43C;color:#0C2A14;font:700 24px/1 'Roboto',Arial,sans-serif;cursor:pointer;box-shadow:4px 4px 0 #0C2A14;opacity:0;pointer-events:none;transition:opacity .2s}
+.arriba.visible{opacity:1;pointer-events:auto}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.arriba{transition:none}}
 /* Hoja del calendario litúrgico (aspecto de la hoja de Manna) */
 .hoja{background:#F6F3EC;font-family:'Palatino Linotype',Palatino,'Book Antiqua','URW Palladio L',Georgia,serif;color:#221E1A}
 .hoja[hidden]{display:none}
@@ -47,8 +52,8 @@ img{max-width:100%}
 <div class="solo-pc">
 <div style="font-family: 'Roboto', Arial, sans-serif; font-weight: 300; color: #2B312C; background: #FFFFFF; line-height: 1.6; font-size: 18px">
 
-<header style="background: #FFFFFF">
-<div style="max-width: 1200px; margin: 0 auto; padding: 22px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px">
+<header style="background: #FFFFFF; position: sticky; top: 0; z-index: 50; border-bottom: 1px solid #E1E6DE">
+<div style="max-width: 1200px; margin: 0 auto; padding: 12px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px">
 <a href="#inicio" style="display: flex; align-items: center; gap: 14px; text-decoration: none; color: #0C2A14">
 <img src="img/escudo.png" alt="Escudo de la Diócesis de Daule" style="width: 62px; height: 59px; object-fit: contain">
 <span style="display: flex; flex-direction: column; font-family: 'Roboto Slab', serif; text-transform: uppercase; line-height: 1.05">
@@ -353,7 +358,7 @@ img{max-width:100%}
 <div class="solo-movil">
 <div style="font-family: 'Roboto', Arial, sans-serif; font-weight: 400; color: #2B312C; background: #FFFFFF; line-height: 1.5; font-size: 17px">
 
-<header style="display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid #E1E6DE">
+<header style="display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid #E1E6DE; background: #FFFFFF; position: sticky; top: 0; z-index: 50">
 <a href="#m-inicio" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #0C2A14">
 <img src="img/escudo.png" alt="Escudo de la Diócesis de Daule" style="width: 44px; height: 42px; object-fit: contain">
 <span style="display: flex; flex-direction: column; font-family: 'Roboto Slab', serif; text-transform: uppercase; line-height: 1.05">
@@ -585,6 +590,15 @@ img{max-width:100%}
   document.querySelectorAll('[data-c]').forEach(function (el) {
     var c = pool[+el.getAttribute('data-c')]; el.style.fill = c; el.style.stroke = c;
   });
+})();
+</script>
+<button class="arriba" type="button" aria-label="Volver arriba" title="Volver arriba">↑</button>
+<script>
+(function () {
+  var b = document.querySelector('.arriba');
+  b.addEventListener('click', function () { window.scrollTo(0, 0); });
+  function ver() { b.classList.toggle('visible', window.scrollY > 600); }
+  window.addEventListener('scroll', ver, { passive: true }); ver();
 })();
 </script>
 <script src="js/hoja.js"></script>
