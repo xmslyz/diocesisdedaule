@@ -19,6 +19,10 @@ for origen in sorted(CARPETA.glob("daule-*.json")):
     for d in datos["days"]:
         c = d["celebration"]
         e = {"n": c["name"], "t": c["type"], "c": d["color"], "s": d["season"]}
+        if d.get("season_week"):
+            e["w"] = d["season_week"]
+        if d.get("psalter_week"):
+            e["p"] = d["psalter_week"]
         if c.get("sub"):
             e["sub"] = c["sub"]
         if c.get("source") not in (None, "general"):
