@@ -33,17 +33,19 @@ h2 { margin: 56px 0 4px; font-weight: 700; font-size: clamp(28px, 3.4vw, 42px); 
 .leyenda { display: flex; flex-wrap: wrap; gap: 6px 22px; font-size: 14px; margin: 0 0 6px; padding: 0; list-style: none; }
 .leyenda li { display: flex; align-items: center; gap: 8px; }
 .leyenda i { width: 14px; height: 14px; display: inline-block; }
-.acto { display: grid; grid-template-columns: 150px 10px minmax(0, 1fr); gap: 0 22px; border-top: 1px solid #C9D2C7; padding: 16px 0; align-items: start; }
-.acto .cuando { font-weight: 700; font-size: 26px; letter-spacing: -0.01em; color: var(--oscuro); line-height: 1.15; }
+.acto { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 0 22px; border-top: 1px solid #C9D2C7; padding: 12px 0; align-items: start; }
+.acto .cuando { font-weight: 700; font-size: 26px; letter-spacing: -0.01em; color: var(--oscuro); line-height: 1.15; padding-top: 6px; }
+.acto.solo-liturgia .cuando { color: #B5191D; }
 .acto .cuando small { display: block; font-weight: 400; font-size: 14px; letter-spacing: 0; color: var(--texto); text-transform: capitalize; }
-.acto .barra { align-self: stretch; background: var(--verde); }
-.acto h3 { margin: 0; font-size: 21px; font-weight: 500; color: var(--oscuro); line-height: 1.25; }
-.acto p { margin: 2px 0 0; font-size: 16px; }
-.acto.hoy-es h3::after { content: 'hoy'; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; background: var(--oro); color: var(--oscuro); padding: 2px 7px; margin-left: 10px; vertical-align: middle; }
-.acto.liturgia { background: var(--crema); padding-left: 14px; padding-right: 14px; margin: 0 -14px; }
-.acto.liturgia h3 { font-family: 'Palatino Linotype', Palatino, 'Book Antiqua', 'URW Palladio L', Georgia, serif; font-weight: 400; }
-.acto.liturgia .cuando { color: #B5191D; }
-.acto.liturgia p { font-style: italic; font-family: 'Palatino Linotype', Palatino, 'Book Antiqua', 'URW Palladio L', Georgia, serif; }
+.acto .cosas { display: flex; flex-direction: column; gap: 6px; }
+.cosa { display: grid; grid-template-columns: 10px minmax(0, 1fr); gap: 0 18px; padding: 6px 0; }
+.cosa .barra { background: var(--verde); }
+.cosa h3 { margin: 0; font-size: 21px; font-weight: 500; color: var(--oscuro); line-height: 1.25; }
+.cosa p { margin: 2px 0 0; font-size: 16px; }
+.acto.hoy-es .cuando::after { content: 'hoy'; display: inline-block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; background: var(--oro); color: var(--oscuro); padding: 2px 7px; margin-left: 10px; vertical-align: middle; }
+.cosa.liturgia { background: var(--crema); padding: 8px 12px 8px 0; }
+.cosa.liturgia h3 { font-family: 'Palatino Linotype', Palatino, 'Book Antiqua', 'URW Palladio L', Georgia, serif; font-weight: 400; }
+.cosa.liturgia p { font-style: italic; font-family: 'Palatino Linotype', Palatino, 'Book Antiqua', 'URW Palladio L', Georgia, serif; }
 .meses { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0 40px; padding-bottom: 70px; }
 .mes { border-top: 2px solid var(--oscuro); padding: 12px 0 18px; }
 .mes h3 { margin: 0 0 4px; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; color: var(--verde); }
@@ -55,11 +57,10 @@ footer span { color: var(--oro); }
 @media (max-width: 760px) {
   header nav { gap: 12px; font-size: 14px; flex-wrap: nowrap; }
   .marca span { display: none; }
-  .acto { grid-template-columns: 8px minmax(0, 1fr); gap: 2px 14px; }
-  .acto .cuando { grid-column: 2; font-size: 20px; }
+  .acto { grid-template-columns: 1fr; gap: 4px; }
+  .acto .cuando { font-size: 20px; padding-top: 0; }
   .acto .cuando small { display: inline; margin-left: 8px; }
-  .acto .barra { grid-row: 1 / span 2; grid-column: 1; }
-  .acto > div:last-child { grid-column: 2; }
+  .cosa { grid-template-columns: 8px minmax(0, 1fr); gap: 0 14px; }
 }
 </style>
 </head>
@@ -189,19 +190,34 @@ footer span { color: var(--oro); }
     }
     filas.sort(function (a, b) { return a.d - b.d || a.orden - b.orden; });
 
+    // Un solo bloque por fecha: lo que cae el mismo día va junto
+    var grupos = [];
+    filas.forEach(function (r) {
+      var ult = grupos[grupos.length - 1];
+      if (ult && !ult.h && !r.h && ult.d.getTime() === r.d.getTime()) ult.cosas.push(r);
+      else grupos.push({ d: r.d, h: r.h, cosas: [r] });
+    });
+
     var caja = document.getElementById('viene');
     caja.textContent = '';
-    filas.forEach(function (r) {
-      var art = el('article', 'acto' + (r.tipo === 'liturgia' ? ' liturgia' : ''));
-      if (r.d <= hoy && (r.h || r.d) >= hoy) art.className += ' hoy-es';
-      art.appendChild(cuando(r.d, r.h));
-      var barra = el('div', 'barra');
-      if (r.tipo === 'liturgia') barra.style.background = r.color || '#A98743';
-      art.appendChild(barra);
-      var cuerpo = el('div');
-      cuerpo.appendChild(el('h3', null, r.titulo));
-      if (r.detalle) cuerpo.appendChild(el('p', null, r.detalle));
-      art.appendChild(cuerpo);
+    grupos.forEach(function (g) {
+      var art = el('article', 'acto');
+      if (g.cosas.every(function (r) { return r.tipo === 'liturgia'; })) art.className += ' solo-liturgia';
+      if (g.d <= hoy && (g.h || g.d) >= hoy) art.className += ' hoy-es';
+      art.appendChild(cuando(g.d, g.h));
+      var cosas = el('div', 'cosas');
+      g.cosas.forEach(function (r) {
+        var cosa = el('div', 'cosa' + (r.tipo === 'liturgia' ? ' liturgia' : ''));
+        var barra = el('div', 'barra');
+        if (r.tipo === 'liturgia') barra.style.background = r.color || '#A98743';
+        cosa.appendChild(barra);
+        var cuerpo = el('div');
+        cuerpo.appendChild(el('h3', null, r.titulo));
+        if (r.detalle) cuerpo.appendChild(el('p', null, r.detalle));
+        cosa.appendChild(cuerpo);
+        cosas.appendChild(cosa);
+      });
+      art.appendChild(cosas);
       caja.appendChild(art);
     });
     if (!filas.length) caja.appendChild(el('p', null, 'Pronto anunciaremos los próximos actos.'));
