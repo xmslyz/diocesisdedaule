@@ -4,6 +4,10 @@ Sitio estático de la Diócesis de Daule (Ecuador). En construcción.
 
 - `index.html` — página de inicio (versión para ordenador y versión para teléfono en el mismo archivo).
 - `noticias.html` — noticias; se llena sola con `data/noticias.js`.
+- `js/hoja.js` — hoja del calendario litúrgico de hoy en la página de inicio. Para probar otro día:
+  `index.html?fecha=2026-12-09`.
+- `data/calendario/daule-AAAA.json` — calendario propio de la diócesis generado por LitCal (2026–2030).
+  Tras reemplazar o añadir un año: `python scripts/calendario_js.py` (genera los `.js` que carga la página).
 - `img/` — fotos, escudo y sello del año pastoral.
 - `scripts/noticias_facebook.py` + `.github/workflows/noticias.yml` — tarea diaria (gratis) que trae las
   publicaciones nuevas de la página de Facebook: texto y enlaces a las fotos (las fotos no se copian).
