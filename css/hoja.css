@@ -1,7 +1,10 @@
 /* Hoja del calendario litúrgico (aspecto de la hoja de Manna) */
 .hoja{background:#F6F3EC;font-family:'Palatino Linotype',Palatino,'Book Antiqua','URW Palladio L',Georgia,serif;color:#221E1A}
 .hoja[hidden]{display:none}
-.hoja-caja{max-width:1200px;margin:0 auto;padding:34px 24px 36px;display:grid;grid-template-columns:minmax(210px,auto) minmax(380px,1.15fr) minmax(0,1fr);gap:20px 40px;align-items:center}
+.hoja-caja{max-width:1200px;margin:0 auto;padding:34px 24px 36px;display:grid;grid-template-columns:270px minmax(380px,1.15fr) minmax(0,1fr);gap:20px 40px;align-items:start;min-height:268px}
+/* Columnas fijas: al cambiar de semana, flechas y días no se mueven de sitio */
+@media (min-width:1001px){.hoja-caja>.hoja-nav{margin-top:52px}.hoja-caja>.hoja-cel{margin-top:44px}}
+.hoja-dos .hoja-caja{min-height:0}
 .hoja-dia{text-align:center}
 .hoja-sem{color:#B5191D;font-weight:700;font-size:26px;letter-spacing:.16em;text-transform:uppercase;line-height:1}
 .hoja-num{color:#B5191D;font-weight:700;font-size:112px;line-height:.95}
