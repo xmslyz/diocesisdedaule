@@ -30,9 +30,11 @@ h1 { margin: 30px 0 8px; font-weight: 700; font-size: clamp(40px, 7vw, 80px); li
 .bajada { margin: 0 0 30px; max-width: 600px; }
 h2 { margin: 56px 0 4px; font-weight: 700; font-size: clamp(28px, 3.4vw, 42px); letter-spacing: -0.02em; color: var(--oscuro); line-height: 1.05; }
 .sub { margin: 0 0 14px; max-width: 620px; }
-.leyenda { display: flex; flex-wrap: wrap; gap: 6px 22px; font-size: 14px; margin: 0 0 6px; padding: 0; list-style: none; }
-.leyenda li { display: flex; align-items: center; gap: 8px; }
-.leyenda i { width: 14px; height: 14px; display: inline-block; }
+.leyenda { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; }
+.leyenda button { font: 500 15px 'Roboto', Arial, sans-serif; padding: 10px 14px; min-height: 44px; border: 2px solid var(--oscuro); background: var(--oscuro); color: #FFFFFF; cursor: pointer; display: flex; align-items: center; gap: 9px; }
+.leyenda button[aria-pressed="false"] { background: #FFFFFF; color: #6B736C; border-color: #B9C2B7; text-decoration: line-through; }
+.leyenda button:focus-visible { outline: 3px solid var(--oro); outline-offset: 2px; }
+.leyenda i { width: 14px; height: 14px; display: inline-block; flex: none; }
 .acto { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 0 22px; border-top: 1px solid #C9D2C7; padding: 12px 0; align-items: start; }
 .acto .cuando { font-weight: 700; font-size: 26px; letter-spacing: -0.01em; color: var(--oscuro); line-height: 1.15; padding-top: 6px; }
 .acto.solo-liturgia .cuando { color: #B5191D; }
@@ -92,10 +94,10 @@ footer span { color: var(--oro); }
   <div class="ancho">
     <h2>Lo que viene</h2>
     <p class="sub">Los actos de la diócesis y las solemnidades y fiestas de los próximos tres meses.</p>
-    <ul class="leyenda">
-      <li><i style="background: #0A5C1A"></i>Acto de la diócesis</li>
-      <li><i style="background: #F6F3EC; border: 1px solid #B5191D"></i>Calendario litúrgico (la barra indica el color del día)</li>
-    </ul>
+    <div class="leyenda" role="group" aria-label="Qué mostrar">
+      <button type="button" data-tipo="diocesis" aria-pressed="true"><i style="background: #0A5C1A"></i>Actos de la diócesis</button>
+      <button type="button" data-tipo="liturgia" aria-pressed="true"><i style="background: #F6F3EC; border: 1px solid #B5191D"></i>Calendario litúrgico</button>
+    </div>
     <div id="viene"></div>
 
     <h2>El año de la diócesis</h2>
@@ -171,6 +173,19 @@ footer span { color: var(--oro); }
     return c;
   }
 
+  // Botones para ver solo la diócesis, solo el calendario litúrgico o ambos
+  var ver = { diocesis: true, liturgia: true };
+  var filtros = document.querySelectorAll('.leyenda button');
+  filtros.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var t = b.dataset.tipo, otro = t === 'diocesis' ? 'liturgia' : 'diocesis';
+      ver[t] = !ver[t];
+      if (!ver[t] && !ver[otro]) ver[otro] = true;     // nunca se queda la lista vacía
+      filtros.forEach(function (x) { x.setAttribute('aria-pressed', String(ver[x.dataset.tipo])); });
+      pintar();
+    });
+  });
+
   function pintar() {
     var filas = [];
     (window.AGENDA || []).forEach(function (a) {
@@ -188,6 +203,7 @@ footer span { color: var(--oro); }
       else if (x.src === 'ec') linea.push('propio del Ecuador');
       filas.push({ d: new Date(f.getTime()), titulo: x.n, detalle: linea.join(' · '), tipo: 'liturgia', color: PUNTO[x.c], orden: 1 });
     }
+    filas = filas.filter(function (r) { return ver[r.tipo]; });
     filas.sort(function (a, b) { return a.d - b.d || a.orden - b.orden; });
 
     // Un solo bloque por fecha: lo que cae el mismo día va junto
