@@ -1,23 +1,48 @@
 /* Hoja del calendario litúrgico (aspecto de la hoja de Manna) */
 .hoja{background:#F6F3EC;font-family:'Palatino Linotype',Palatino,'Book Antiqua','URW Palladio L',Georgia,serif;color:#221E1A}
 .hoja[hidden]{display:none}
-.hoja-caja{max-width:1200px;margin:0 auto;padding:34px 24px 36px;display:grid;grid-template-columns:minmax(210px,auto) minmax(0,1fr) minmax(0,1.15fr);gap:20px 44px;align-items:center}
+.hoja-caja{max-width:1200px;margin:0 auto;padding:34px 24px 36px;display:grid;grid-template-columns:minmax(210px,auto) minmax(300px,1fr) minmax(0,1.1fr);gap:20px 36px;align-items:center}
 .hoja-dia{text-align:center}
 .hoja-sem{color:#B5191D;font-weight:700;font-size:26px;letter-spacing:.16em;text-transform:uppercase;line-height:1}
 .hoja-num{color:#B5191D;font-weight:700;font-size:112px;line-height:.95}
 .hoja-tiempo{font-size:21px;color:#5A534B;padding-top:4px}
 .hoja-mes,.hoja-rotulo,.tira-dia{font-family:'Roboto',Arial,sans-serif;text-transform:uppercase;letter-spacing:.2em;font-size:12px;font-weight:500;color:#9A9287}
 .hoja-mes{padding-top:5px}
-.hoja-tira{list-style:none;margin:0;padding:14px 0 12px;display:grid;grid-template-columns:repeat(7,1fr);border-top:1.5px solid #D6CEC2;border-bottom:1.5px solid #D6CEC2;text-align:center}
-.hoja-tira li{display:flex;flex-direction:column;align-items:center;gap:7px}
-.tira-num{font-size:23px;line-height:40px;width:40px;height:40px;border-radius:50%}
-.tira-punto{width:8px;height:8px;border-radius:50%}
-.hoja-tira .fuerte .tira-dia,.hoja-tira .fuerte .tira-num{color:#B5191D;font-weight:700}
-.hoja-tira .hoy .tira-num{background:#A98743;color:#FFFFFF;font-weight:700}
+.hoja button{font:inherit;color:inherit;background:none;border:0;padding:0;margin:0;cursor:pointer}
+.hoja button:disabled{cursor:default;opacity:.35}
+.hoja button:focus-visible{outline:3px solid #0C2A14;outline-offset:2px}
+.hoja-nav{display:flex;align-items:center;gap:4px}
+.hoja-flecha{flex:0 0 44px;width:44px;height:44px;font-size:30px!important;line-height:1!important;color:#B5191D!important;border-radius:50%!important}
+.hoja-flecha:hover{background:#EBE5D9!important}
+.hoja-volver{margin-top:10px!important;font:500 13px 'Roboto',Arial,sans-serif!important;text-transform:uppercase;letter-spacing:.14em;color:#B5191D!important;text-decoration:underline;text-underline-offset:4px;padding:8px 6px!important}
+.hoja-tira{flex:1 1 auto;list-style:none;margin:0;padding:10px 0 8px;display:grid;grid-template-columns:repeat(7,1fr);border-top:1.5px solid #D6CEC2;border-bottom:1.5px solid #D6CEC2;text-align:center}
+.tira-boton{width:100%;display:flex!important;flex-direction:column;align-items:center;gap:7px;padding:4px 0!important}
+.tira-num{font-size:23px;line-height:40px;width:40px;height:40px;border-radius:50%;display:block}
+.tira-punto{width:8px;height:8px;border-radius:50%;display:block}
+.tira-boton:hover:not(:disabled) .tira-num,.mes-boton:hover:not(:disabled) .tira-num{background:#EBE5D9}
+.hoja .fuerte .tira-dia,.hoja .fuerte .tira-num,.mes-dia.fuerte{color:#B5191D;font-weight:700}
+.hoja .hoy .tira-num{box-shadow:inset 0 0 0 2px #A98743}
+.hoja .sel .tira-num,.hoja .sel:hover .tira-num{background:#A98743!important;color:#FFFFFF!important;font-weight:700;box-shadow:none}
+/* Cuadrícula del mes */
+.hoja-mesbox{max-width:560px;margin:0 auto;padding:0 22px 34px}
+.mes-cab{display:flex;align-items:center;justify-content:space-between;border-top:1.5px solid #D6CEC2;padding-top:10px}
+.mes-titulo{font-size:22px}.mes-titulo::first-letter{text-transform:uppercase}
+.mes-rejilla{display:grid;grid-template-columns:repeat(7,1fr);text-align:center;padding-top:6px}
+.mes-dia{font-family:'Roboto',Arial,sans-serif;text-transform:uppercase;letter-spacing:.16em;font-size:11px;font-weight:500;color:#9A9287;padding:6px 0}
+.mes-boton{display:flex!important;flex-direction:column;align-items:center;gap:3px;padding:3px 0 5px!important}
+.mes-boton.fuerte .tira-num{color:#B5191D;font-weight:700}
+.mes-boton.hoy .tira-num{box-shadow:inset 0 0 0 2px #A98743}
+.mes-boton.sel .tira-num{background:#A98743!important;color:#FFFFFF!important;font-weight:700;box-shadow:none}
+.mes-vacio{text-align:center;font-style:italic;color:#6B645B;margin:10px 0 0}
+.hoja-deldia{max-width:560px;margin:0 auto;padding:0 22px 30px;text-align:center}
+.hoja-deldia p{margin:0}
+.hoja-deldia .hoja-rotulo{padding-bottom:4px}
+.hoja-deldia .acto-dia{font-size:20px}
+.hoja-deldia .acto-dia small{display:block;font-size:16px;font-style:italic;color:#5A534B}
 .hoja-cel{text-align:center}
 .hoja-cel p{margin:0}
 .hoja-nombre{font-size:clamp(23px,2.3vw,31px);line-height:1.18;padding:8px 0 4px}
 .hoja-grado{font-style:italic;font-size:19px;color:#5A534B}
 .hoja-nota{font-size:16px;color:#6B645B;padding-top:8px}
 @media (max-width:1000px){.hoja-caja{grid-template-columns:1fr;max-width:560px;gap:22px;padding:30px 22px 32px}}
-@media (max-width:760px){.hoja-num{font-size:96px}.tira-num{font-size:20px;width:36px;height:36px;line-height:36px}.tira-dia{font-size:11px;letter-spacing:.12em}}
+@media (max-width:760px){.hoja-flecha{flex-basis:34px;width:34px}.hoja-caja{padding-left:10px!important;padding-right:10px!important}.hoja-num{font-size:96px}.tira-num{font-size:20px;width:36px;height:36px;line-height:36px}.tira-dia{font-size:11px;letter-spacing:.12em}}

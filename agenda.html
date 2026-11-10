@@ -41,8 +41,8 @@ h2 { margin: 56px 0 4px; font-weight: 700; font-size: clamp(28px, 3.4vw, 42px); 
 .acto p { margin: 2px 0 0; font-size: 16px; }
 .acto.hoy-es h3::after { content: 'hoy'; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; background: var(--oro); color: var(--oscuro); padding: 2px 7px; margin-left: 10px; vertical-align: middle; }
 .acto.liturgia { background: var(--crema); padding-left: 14px; padding-right: 14px; margin: 0 -14px; }
-.acto.liturgia h3, .acto.liturgia .cuando { font-family: 'Palatino Linotype', Palatino, 'Book Antiqua', 'URW Palladio L', Georgia, serif; font-weight: 400; }
-.acto.liturgia .cuando { color: #B5191D; font-weight: 700; }
+.acto.liturgia h3 { font-family: 'Palatino Linotype', Palatino, 'Book Antiqua', 'URW Palladio L', Georgia, serif; font-weight: 400; }
+.acto.liturgia .cuando { color: #B5191D; }
 .acto.liturgia p { font-style: italic; font-family: 'Palatino Linotype', Palatino, 'Book Antiqua', 'URW Palladio L', Georgia, serif; }
 .meses { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0 40px; padding-bottom: 70px; }
 .mes { border-top: 2px solid var(--oscuro); padding: 12px 0 18px; }
@@ -82,7 +82,11 @@ footer span { color: var(--oro); }
     <p class="bajada">Lo que viene en la diócesis y lo que la Iglesia celebra cada día.</p>
   </div>
 
-  <aside class="hoja" data-hoja hidden aria-label="Calendario litúrgico de hoy"></aside>
+  <div class="hoja">
+    <aside data-hoja hidden aria-label="Calendario litúrgico"></aside>
+    <div class="hoja-deldia" id="del-dia" hidden></div>
+    <div class="hoja-mesbox" data-mes aria-label="Calendario del mes"></div>
+  </div>
 
   <div class="ancho">
     <h2>Lo que viene</h2>
@@ -129,6 +133,22 @@ footer span { color: var(--oro); }
   var prueba = /^\d{4}-\d{2}-\d{2}$/.exec(new URLSearchParams(location.search).get('fecha') || '');
   var hoy = fecha(prueba ? prueba[0] : p.year + '-' + p.month + '-' + p.day);
   var fin = new Date(hoy.getTime() + VENTANA * 86400000);
+
+  // Actos de la diócesis del día elegido en el calendario
+  var delDia = document.getElementById('del-dia');
+  document.addEventListener('hoja:dia', function (e) {
+    var f = fecha(e.detail);
+    var actos = (window.AGENDA || []).filter(function (a) { return fecha(a.desde) <= f && fecha(a.hasta || a.desde) >= f; });
+    delDia.textContent = '';
+    delDia.hidden = !actos.length;
+    if (!actos.length) return;
+    delDia.appendChild(el('p', 'hoja-rotulo', 'Ese día en la diócesis'));
+    actos.forEach(function (a) {
+      var pr = el('p', 'acto-dia', a.titulo);
+      if (a.detalle) pr.appendChild(el('small', null, a.detalle));
+      delDia.appendChild(pr);
+    });
+  });
 
   // El año de la diócesis
   var meses = document.getElementById('meses');
