@@ -31,6 +31,27 @@
 .hoja-dos .hoja-deldia{padding:22px 0 0;margin-top:24px;border-top:1.5px solid #D6CEC2;max-width:520px}
 .hoja-mesbox{background:#FFFFFF;border:1.5px solid #D6CEC2;padding:14px 18px 18px}
 .hoja-mesbox .mes-cab{border-top:0;padding-top:0}
+/* Agenda: todo el bloque un 25 % más pequeño */
+.hoja-dos{padding-top:22px;padding-bottom:24px;grid-template-columns:minmax(0,1fr) minmax(300px,390px);gap:20px 56px}
+.hoja-dos .hoja-caja{gap:14px}
+.hoja-dos .hoja-sem{font-size:20px}
+.hoja-dos .hoja-num{font-size:82px}
+.hoja-dos .hoja-tiempo{font-size:17px;padding-top:2px}
+.hoja-dos .hoja-mes,.hoja-dos .hoja-rotulo{font-size:11px}
+.hoja-dos .hoja-volver{margin-top:4px!important;padding:6px!important;font-size:12px!important}
+.hoja-dos .hoja-nombre{font-size:clamp(21px,2.1vw,28px);padding:4px 0 2px}
+.hoja-dos .hoja-grado{font-size:16px}
+.hoja-dos .hoja-nota{font-size:14px;padding-top:4px}
+.hoja-dos .hoja-deldia{padding-top:12px;margin-top:14px}
+.hoja-dos .acto-dia{font-size:17px}
+.hoja-dos .acto-dia small{font-size:14px}
+.hoja-mesbox{padding:8px 14px 10px}
+.hoja-mesbox .mes-titulo{font-size:18px}
+.hoja-mesbox .hoja-flecha{flex-basis:34px;width:34px;height:34px;font-size:24px!important}
+.hoja-mesbox .mes-dia{font-size:10px;padding:3px 0}
+.hoja-mesbox .mes-boton{gap:1px;padding:1px 0 3px!important}
+.hoja-mesbox .tira-num{font-size:18px;width:30px;height:30px;line-height:30px}
+.hoja-mesbox .tira-punto{width:6px;height:6px}
 @media (max-width:860px){.hoja-dos{grid-template-columns:1fr;padding:28px 16px 30px;gap:26px}.hoja-mesbox{padding:10px 8px 14px}}
 .mes-cab{display:flex;align-items:center;justify-content:space-between;border-top:1.5px solid #D6CEC2;padding-top:10px}
 .mes-titulo{font-size:22px}.mes-titulo::first-letter{text-transform:uppercase}
