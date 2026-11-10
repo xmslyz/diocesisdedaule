@@ -5,6 +5,7 @@ Sitio estático de la Diócesis de Daule (Ecuador). En construcción.
 - `index.html` — página de inicio (versión para ordenador y versión para teléfono en el mismo archivo).
 - `camino.html` — el camino en cuatro pasos, con las pastorales y movimientos que acompañan cada uno.
 - `pastorales.html` — una ficha por cada pastoral, movimiento y obra, con enlace a su página propia.
+- `diocesis.html` — obispo, patrona, catedral, historia desde 2022, asambleas y curia.
 - `parroquias.html` — las 30 parroquias con mapa, zonas y buscador; datos en `data/parroquias.json` / `.js`.
 - `agenda.html` — actos de la diócesis (se editan en `data/agenda.js`) junto con las solemnidades y fiestas
   del calendario litúrgico, que salen solas de LitCal.

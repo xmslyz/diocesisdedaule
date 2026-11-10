@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Sitio en construcción: quitar esta línea cuando se publique oficialmente -->
+<meta name="robots" content="noindex, nofollow">
+<title>La diócesis · Diócesis de Daule</title>
+<meta name="description" content="La Diócesis de Daule: su obispo, su patrona santa Narcisa de Jesús, su historia desde 2022, las asambleas diocesanas y la curia.">
+<link rel="icon" href="img/escudo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Slab:wght@500;700&display=swap">
+<style>
+:root { --verde: #0A5C1A; --oscuro: #0C2A14; --oro: #E0B43C; --rojo: #D8321F; --texto: #2B312C; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: 'Roboto', Arial, sans-serif; color: var(--texto); line-height: 1.5; font-size: 17px; background: #FFFFFF; }
+a { color: var(--verde); }
+a:hover { color: var(--oscuro); }
+.ancho { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+header { position: sticky; top: 0; z-index: 50; background: #FFFFFF; border-bottom: 1px solid #E1E6DE; }
+header .ancho { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 10px; padding-bottom: 10px; }
+.marca { flex: none; display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--oscuro); font-family: 'Roboto Slab', serif; font-weight: 700; font-size: 20px; letter-spacing: 0.04em; }
+.marca img { height: 46px; width: auto; }
+header nav { display: flex; gap: 22px; overflow-x: auto; }
+header nav a { text-decoration: none; color: var(--oscuro); padding: 12px 0; white-space: nowrap; }
+header nav a[aria-current] { font-weight: 700; border-bottom: 3px solid var(--oro); }
+section { scroll-margin-top: 90px; }
+.portada { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 30px 60px; align-items: end; padding-top: 34px; padding-bottom: 46px; }
+h1 { margin: 0 0 14px; font-weight: 700; font-size: clamp(42px, 7vw, 88px); line-height: 0.96; letter-spacing: -0.025em; color: var(--oscuro); }
+.bajada { margin: 0; max-width: 560px; font-size: 19px; }
+.lema { margin: 18px 0 0; font-family: 'Roboto Slab', serif; font-weight: 700; font-size: clamp(22px, 2.6vw, 32px); color: var(--verde); }
+.cifras { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 2px solid var(--oscuro); }
+.cifras li { padding: 12px 0 0; font-size: 15px; }
+.cifras b { display: block; font-weight: 700; font-size: clamp(44px, 5vw, 68px); line-height: 1; color: var(--oscuro); letter-spacing: -0.02em; }
+h2 { margin: 0 0 14px; font-weight: 700; font-size: clamp(30px, 3.8vw, 48px); letter-spacing: -0.02em; color: var(--oscuro); line-height: 1.02; }
+.rotulo { margin: 0 0 6px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; color: var(--verde); }
+.persona { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 0; align-items: stretch; }
+.persona img { width: 100%; height: 100%; min-height: 380px; max-height: 520px; object-fit: cover; display: block; }
+.persona .texto { padding: 46px 56px; display: flex; flex-direction: column; justify-content: center; }
+.persona p { margin: 0 0 10px; max-width: 520px; }
+.obispo { background: var(--oscuro); color: #FFFFFF; }
+.obispo h2, .obispo .rotulo { color: #FFFFFF; }
+.obispo .rotulo { color: var(--oro); }
+.obispo .cita { font-family: 'Roboto Slab', serif; font-weight: 500; font-size: 24px; color: var(--oro); margin-top: 8px; }
+.patrona { background: #FBF6E4; }
+.patrona .texto { order: -1; }
+.patrona a { font-weight: 500; }
+.datos { list-style: none; margin: 6px 0 0; padding: 0; }
+.datos li { padding: 7px 0; border-top: 1px solid rgba(255,255,255,.22); font-size: 16px; }
+.patrona .datos li { border-color: #E3D9B4; }
+.bloque { padding-top: 70px; }
+.linea { list-style: none; margin: 0; padding: 0; }
+.linea li { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 0 28px; padding: 16px 0; border-top: 1px solid #C9D2C7; align-items: baseline; }
+.linea li:last-child { border-bottom: 1px solid #C9D2C7; }
+.cuando { font-weight: 700; font-size: 26px; letter-spacing: -0.01em; color: var(--oscuro); line-height: 1.1; }
+.cuando small { display: block; font-weight: 400; font-size: 15px; letter-spacing: 0; color: var(--texto); }
+.linea h3 { margin: 0; font-size: 21px; font-weight: 500; color: var(--oscuro); line-height: 1.25; }
+.linea p { margin: 2px 0 0; font-size: 16px; max-width: 700px; }
+.linea li:last-child .cuando, .linea li:last-child h3 { color: var(--verde); }
+.asamblea { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 30px 60px; align-items: start; }
+.asamblea img { width: 100%; height: auto; display: block; }
+.asamblea p { margin: 0 0 12px; max-width: 640px; }
+.asamblea .cita { font-family: 'Roboto Slab', serif; font-weight: 700; font-size: clamp(24px, 3vw, 36px); color: var(--verde); line-height: 1.15; margin-bottom: 4px; }
+.itin { list-style: none; margin: 14px 0 0; padding: 0; max-width: 640px; }
+.itin li { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 0 18px; padding: 9px 0; border-top: 1px solid #DCE2DA; }
+.itin b { font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: .12em; color: var(--verde); padding-top: 3px; }
+.curia { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 30px 60px; align-items: start; padding-bottom: 80px; }
+.curia address { font-style: normal; display: flex; flex-direction: column; gap: 2px; font-size: 18px; }
+.curia address a { padding: 8px 0; font-weight: 500; }
+.curia .boton { align-self: flex-start; margin-top: 10px; text-decoration: none; background: var(--verde); color: #FFFFFF; padding: 14px 22px; font-size: 16px; }
+footer { background: var(--oscuro); color: #FFFFFF; }
+footer p { margin: 0; padding: 30px 0; font-family: 'Roboto Slab', serif; font-weight: 500; font-size: clamp(20px, 3vw, 30px); }
+footer span { color: var(--oro); }
+@media (max-width: 860px) {
+  header nav { gap: 14px; font-size: 14px; }
+  .marca span { display: none; }
+  .portada, .persona, .asamblea, .curia { grid-template-columns: 1fr; }
+  .persona .texto { padding: 30px 22px 34px; order: 0; }
+  .persona img { min-height: 0; height: 300px; }
+  .asamblea img { max-width: 200px; }
+  .linea li { grid-template-columns: 1fr; }
+  .cuando { font-size: 20px; }
+  .cuando small { display: inline; margin-left: 8px; }
+  .bloque { padding-top: 50px; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="ancho">
+    <a class="marca" href="index.html"><img src="img/escudo.png" alt="Diócesis de Daule"> <span>DIÓCESIS DE DAULE</span></a>
+    <nav aria-label="Principal">
+      <a href="index.html">Inicio</a>
+      <a href="camino.html">El camino</a>
+      <a href="pastorales.html">Pastorales</a>
+      <a href="parroquias.html">Parroquias</a>
+      <a href="agenda.html">Agenda</a>
+      <a href="noticias.html">Noticias</a>
+      <a href="diocesis.html" aria-current="page">Diócesis</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="ancho portada">
+    <div>
+      <h1>Una diócesis joven, en camino</h1>
+      <p class="bajada">Nacimos el 2 de febrero de 2022, en el norte del Guayas, entre el río Daule y los arrozales. Somos una Iglesia que sale al encuentro.</p>
+      <p class="lema">«Movilizar para Evangelizar»</p>
+    </div>
+    <ul class="cifras">
+      <li><b>12</b>cantones</li>
+      <li><b>30</b>parroquias</li>
+      <li><b>4</b>zonas pastorales</li>
+    </ul>
+  </div>
+
+  <section class="persona obispo" id="obispo">
+    <img src="img/obispo-pregon.jpg" alt="Mons. Cristóbal Kudławiec, obispo de Daule">
+    <div class="texto">
+      <p class="rotulo">Nuestro obispo</p>
+      <h2>Mons. Cristóbal Kudławiec</h2>
+      <p>Primer obispo de Daule. Nació en Polonia y es sacerdote desde 1995.</p>
+      <ul class="datos">
+        <li>Ordenado sacerdote el 25 de mayo de 1995, en la diócesis de Rzeszów (Polonia)</li>
+        <li>Nombrado obispo de Daule el 22 de abril de 2022</li>
+        <li>Ordenación episcopal y toma de posesión: 25 de junio de 2022</li>
+      </ul>
+      <p class="cita">«Iesu, in te confido»</p>
+      <p style="font-size: 15px; margin: 0">Su lema episcopal: «Jesús, en ti confío».</p>
+    </div>
+  </section>
+
+  <section class="persona patrona" id="patrona">
+    <img src="img/santa-narcisa.jpg" alt="El obispo y los sacerdotes de la diócesis en la celebración de Santa Narcisa de Jesús">
+    <div class="texto">
+      <p class="rotulo">Nuestra patrona</p>
+      <h2>Santa Narcisa de Jesús</h2>
+      <p>Narcisa de Jesús Martillo Morán nació en Nobol, en nuestra tierra. Es la patrona de la diócesis desde el 7 de diciembre de 2024.</p>
+      <ul class="datos">
+        <li>Canonizada el 12 de octubre de 2008</li>
+        <li>En la diócesis, su solemnidad se celebra el 9 de diciembre</li>
+        <li>Cada año peregrinamos a su santuario, en Nobol</li>
+      </ul>
+      <p style="margin-top: 12px"><a href="pastorales.html#santuario-narcisa">Santuario Nacional Santa Narcisa de Jesús</a></p>
+    </div>
+  </section>
+
+  <section class="ancho bloque" id="catedral">
+    <p class="rotulo">Nuestra catedral</p>
+    <h2>Señor de los Milagros, Daule</h2>
+    <p style="max-width: 640px; margin: 0">La catedral guarda la imagen del Señor de los Milagros, el Cristo Negro de Daule. Su fiesta es el 14 de septiembre; en esos días la imagen sale en procesión por el río Daule. <a href="parroquias.html?canton=Daule">Parroquias de Daule</a></p>
+  </section>
+
+  <section class="ancho bloque" id="historia">
+    <p class="rotulo">Desde 2022</p>
+    <h2>Nuestra historia cabe todavía en una página</h2>
+    <ol class="linea">
+<li><div class="cuando">2 feb<small>2022</small></div><div><h3>Nace la diócesis</h3><p>El papa Francisco erige la Diócesis de Daule con la bula «Suscipientes Misericordiam», con territorio de la arquidiócesis de Guayaquil.</p></div></li>
+<li><div class="cuando">31 mar<small>2022</small></div><div><h3>Misa de inauguración</h3><p>Se da lectura a la bula de erección.</p></div></li>
+<li><div class="cuando">25 jun<small>2022</small></div><div><h3>Llega nuestro obispo</h3><p>Mons. Cristóbal Kudławiec recibe la ordenación episcopal y toma posesión de la diócesis.</p></div></li>
+<li><div class="cuando">22–23 ene<small>2024</small></div><div><h3>I Asamblea Diocesana</h3><p>En la Curia Diocesana, en Daule.</p></div></li>
+<li><div class="cuando">7 dic<small>2024</small></div><div><h3>Santa Narcisa, patrona</h3><p>En Nobol, santa Narcisa de Jesús es proclamada patrona de la diócesis.</p></div></li>
+<li><div class="cuando">ene<small>2025</small></div><div><h3>II Asamblea Diocesana</h3><p>En la parroquia San Alberto Magno: «Peregrinamos reconociendo la presencia de Dios en nuestra historia».</p></div></li>
+<li><div class="cuando">26–28 ene<small>2026</small></div><div><h3>III Asamblea Diocesana</h3><p>En San Alberto Magno. Comienza el Año Pastoral «Creo en ti, Señor Jesús».</p></div></li>
+<li><div class="cuando">25–27 ene<small>2027</small></div><div><h3>IV Asamblea Diocesana</h3><p>La próxima: toda la diócesis evalúa el año y planifica el siguiente.</p></div></li>
+    </ol>
+  </section>
+
+  <section class="ancho bloque" id="asambleas">
+    <p class="rotulo">Asambleas diocesanas</p>
+    <h2>Cada enero, toda la diócesis se sienta a la misma mesa</h2>
+    <div class="asamblea">
+      <img src="img/sello-ano-pastoral.png" alt="Sello del Año Pastoral 2026: «Creo en ti, Señor Jesús»">
+      <div>
+        <p>Sacerdotes, religiosas y laicos de todas las parroquias, pastorales y movimientos evalúan el año que termina y planifican el que empieza. De cada asamblea sale el plan pastoral y el lema del año.</p>
+        <p class="cita">«Creo en ti, Señor Jesús»</p>
+        <p>Año Pastoral 2026 · Jn 11, 25-26. Este año lo recorremos en cinco encuentros de formación kerigmática:</p>
+        <ol class="itin">
+<li><b>Marzo</b>Jesús vive y me ama</li>
+<li><b>Mayo</b>María, mujer creyente</li>
+<li><b>Julio</b>Creo en ti, Señor Jesús, presente en la Eucaristía</li>
+<li><b>Septiembre</b>Jesucristo nos salva por su cruz y resurrección</li>
+<li><b>Noviembre</b>Creo en la resurrección de la carne y la vida eterna</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="ancho bloque curia" id="curia">
+    <div>
+      <p class="rotulo">Curia diocesana</p>
+      <h2>Ven a vernos</h2>
+      <p style="max-width: 480px; margin: 0">Para trámites, certificados y consultas. Si buscas horarios de misa o sacramentos, pregunta primero en <a href="parroquias.html">tu parroquia</a>.</p>
+    </div>
+    <address>
+      <span>Bolívar y Francisco de Marcos, Daule</span>
+      <span>[HORARIO DE ATENCIÓN]</span>
+      <a href="tel:+59343907336">(04) 390-7336</a>
+      <a href="mailto:diocesisdedaule@gmail.com">diocesisdedaule@gmail.com</a>
+      <a href="https://www.facebook.com/DiocesisdeDaule/" rel="noopener">Facebook de la diócesis</a>
+    </address>
+  </section>
+</main>
+
+<footer>
+  <div class="ancho"><p>¡Alabado sea Jesucristo! <span>¡Por siempre sea alabado!</span></p></div>
+</footer>
+</body>
+</html>
