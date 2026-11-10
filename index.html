@@ -16,6 +16,7 @@ body{margin:0}
 a{color:#0A5C1A}a:hover{color:#0C2A14}
 img{max-width:100%}
 .solo-movil{display:none}
+#m-menu[hidden]{display:none!important}
 @media (max-width: 760px){.solo-pc{display:none}.solo-movil{display:block}}
 html{scroll-behavior:smooth}
 section[id],footer[id],div[id]{scroll-margin-top:92px}
@@ -24,30 +25,8 @@ section[id],footer[id],div[id]{scroll-margin-top:92px}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.arriba{transition:none}}
 /* Los cuatro pasos siempre en una fila; en ventanas estrechas, solo foto y título */
 @media (max-width:1100px){.pasos{gap:8px!important;padding:0 8px!important}.pasos img{height:260px!important}.pasos a>span{padding:14px 14px 84px!important}.pasos a>span>span:nth-child(2){font-size:19px!important}.pasos a>span>span:nth-child(n+3){display:none}}
-/* Hoja del calendario litúrgico (aspecto de la hoja de Manna) */
-.hoja{background:#F6F3EC;font-family:'Palatino Linotype',Palatino,'Book Antiqua','URW Palladio L',Georgia,serif;color:#221E1A}
-.hoja[hidden]{display:none}
-.hoja-caja{max-width:1200px;margin:0 auto;padding:34px 24px 36px;display:grid;grid-template-columns:minmax(210px,auto) minmax(0,1fr) minmax(0,1.15fr);gap:20px 44px;align-items:center}
-.hoja-dia{text-align:center}
-.hoja-sem{color:#B5191D;font-weight:700;font-size:26px;letter-spacing:.16em;text-transform:uppercase;line-height:1}
-.hoja-num{color:#B5191D;font-weight:700;font-size:112px;line-height:.95}
-.hoja-tiempo{font-size:21px;color:#5A534B;padding-top:4px}
-.hoja-mes,.hoja-rotulo,.tira-dia{font-family:'Roboto',Arial,sans-serif;text-transform:uppercase;letter-spacing:.2em;font-size:12px;font-weight:500;color:#9A9287}
-.hoja-mes{padding-top:5px}
-.hoja-tira{list-style:none;margin:0;padding:14px 0 12px;display:grid;grid-template-columns:repeat(7,1fr);border-top:1.5px solid #D6CEC2;border-bottom:1.5px solid #D6CEC2;text-align:center}
-.hoja-tira li{display:flex;flex-direction:column;align-items:center;gap:7px}
-.tira-num{font-size:23px;line-height:40px;width:40px;height:40px;border-radius:50%}
-.tira-punto{width:8px;height:8px;border-radius:50%}
-.hoja-tira .fuerte .tira-dia,.hoja-tira .fuerte .tira-num{color:#B5191D;font-weight:700}
-.hoja-tira .hoy .tira-num{background:#A98743;color:#FFFFFF;font-weight:700}
-.hoja-cel{text-align:center}
-.hoja-cel p{margin:0}
-.hoja-nombre{font-size:clamp(23px,2.3vw,31px);line-height:1.18;padding:8px 0 4px}
-.hoja-grado{font-style:italic;font-size:19px;color:#5A534B}
-.hoja-nota{font-size:16px;color:#6B645B;padding-top:8px}
-@media (max-width:1000px){.hoja-caja{grid-template-columns:1fr;max-width:560px;gap:22px;padding:30px 22px 32px}}
-@media (max-width:760px){.hoja-num{font-size:96px}.tira-num{font-size:20px;width:36px;height:36px;line-height:36px}.tira-dia{font-size:11px;letter-spacing:.12em}}
 </style>
+<link rel="stylesheet" href="css/hoja.css">
 </head>
 <body>
 <!-- ===== Versión para ordenador y tableta ===== -->
@@ -66,11 +45,11 @@ section[id],footer[id],div[id]{scroll-margin-top:92px}
 <nav aria-label="Principal" style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 30px; font-size: 16px; font-weight: 500">
 <a href="#camino" style="text-decoration: none; color: #0C2A14; padding: 12px 0">El camino</a>
 <a href="parroquias.html" style="text-decoration: none; color: #0C2A14; padding: 12px 0">Parroquias</a>
-<a href="#agenda" style="text-decoration: none; color: #0C2A14; padding: 12px 0">Agenda</a>
+<a href="agenda.html" style="text-decoration: none; color: #0C2A14; padding: 12px 0">Agenda</a>
 <a href="noticias.html" style="text-decoration: none; color: #0C2A14; padding: 12px 0">Noticias</a>
 <a href="#diocesis" style="text-decoration: none; color: #0C2A14; padding: 12px 0">Diócesis</a>
 </nav>
-<a href="#parroquias" style="text-decoration: none; background: #0C2A14; color: #FFFFFF; padding: 14px 22px; font-size: 15px; font-weight: 500">Busca tu parroquia</a>
+<a href="parroquias.html" style="text-decoration: none; background: #0C2A14; color: #FFFFFF; padding: 14px 22px; font-size: 15px; font-weight: 500">Busca tu parroquia</a>
 </div>
 </header>
 
@@ -81,7 +60,7 @@ section[id],footer[id],div[id]{scroll-margin-top:92px}
 <p style="margin: 0; font-size: 20px; max-width: 500px">Treinta parroquias entre el río Daule y los arrozales del Guayas. Una diócesis joven, nacida en 2022, que sale a tu encuentro.</p>
 <div style="display: flex; flex-wrap: wrap; gap: 12px">
 <a href="#camino" style="text-decoration: none; background: #0A5C1A; color: #FFFFFF; font-weight: 500; padding: 16px 28px; font-size: 16px">Empieza el camino</a>
-<a href="#parroquias" style="text-decoration: none; color: #0C2A14; font-weight: 500; padding: 15px 28px; border: 1px solid #0C2A14; font-size: 16px">Horarios de misa</a>
+<a href="parroquias.html" style="text-decoration: none; color: #0C2A14; font-weight: 500; padding: 15px 28px; border: 1px solid #0C2A14; font-size: 16px">Horarios de misa</a>
 </div>
 </div>
 <div style="flex: 1.15 1 480px; max-width: 640px; margin: 0 auto">
@@ -121,7 +100,7 @@ section[id],footer[id],div[id]{scroll-margin-top:92px}
 </svg>
 <img src="img/sello-ano-pastoral.png" alt="Sello del Año Pastoral 2026: rostro del Señor de los Milagros con el lema Creo en ti, Señor Jesús" style="position: absolute; left: 24.5%; top: 22.4%; width: 51%; height: auto">
 </div>
-<p style="margin: 14px 0 0; font-size: 15px">Cada pieza es una parroquia; cada color, una zona. <a href="#parroquias" style="font-weight: 500">Encuentra la tuya</a></p>
+<p style="margin: 14px 0 0; font-size: 15px">Cada pieza es una parroquia; cada color, una zona. <a href="parroquias.html" style="font-weight: 500">Encuentra la tuya</a></p>
 </div>
 </section>
 
@@ -207,7 +186,7 @@ section[id],footer[id],div[id]{scroll-margin-top:92px}
 <section id="vida" style="max-width: 1200px; margin: 0 auto; padding: 72px 24px 24px">
 <div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 26px">
 <h2 style="margin: 0; font-weight: 700; font-size: clamp(30px, 3.4vw, 44px); letter-spacing: -0.02em; color: #0C2A14">Así caminamos</h2>
-<a href="#noticias-todas" style="font-weight: 500; font-size: 16px; padding: 10px 0">Todas las noticias</a>
+<a href="noticias.html" style="font-weight: 500; font-size: 16px; padding: 10px 0">Todas las noticias</a>
 </div>
 <div style="display: flex; flex-wrap: wrap; gap: 32px">
 <article style="flex: 2 1 560px; display: flex; flex-direction: column; gap: 14px">
@@ -244,22 +223,22 @@ section[id],footer[id],div[id]{scroll-margin-top:92px}
 </form>
 </div>
 <ul style="flex: 1.4 1 520px; list-style: none; margin: 0; padding: 0; border-top: 2px solid #0C2A14">
-<li style="border-bottom: 1px solid #C9D2C7"><a href="#zona-norte" style="text-decoration: none; color: #0C2A14; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 20px; padding: 20px 0">
+<li style="border-bottom: 1px solid #C9D2C7"><a href="parroquias.html?zona=norte" style="text-decoration: none; color: #0C2A14; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 20px; padding: 20px 0">
 <span style="flex: 0 0 96px; display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase"><span aria-hidden="true" style="width: 14px; height: 14px; background: #3FA2E0; display: inline-block"></span>Norte</span>
 <span style="flex: 1 1 200px; font-weight: 500; font-size: 22px">María Inmaculada</span>
 <span style="flex: 1 1 220px; font-size: 16px; font-weight: 400">6 parroquias · El Empalme, Balzar</span>
 </a></li>
-<li style="border-bottom: 1px solid #C9D2C7"><a href="#zona-centro" style="text-decoration: none; color: #0C2A14; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 20px; padding: 20px 0">
+<li style="border-bottom: 1px solid #C9D2C7"><a href="parroquias.html?zona=centro" style="text-decoration: none; color: #0C2A14; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 20px; padding: 20px 0">
 <span style="flex: 0 0 96px; display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase"><span aria-hidden="true" style="width: 14px; height: 14px; background: #0A5C1A; display: inline-block"></span>Centro</span>
 <span style="flex: 1 1 200px; font-weight: 500; font-size: 22px">San José</span>
 <span style="flex: 1 1 220px; font-size: 16px; font-weight: 400">10 parroquias · Daule, Nobol, Santa Lucía, Palestina, Colimes</span>
 </a></li>
-<li style="border-bottom: 1px solid #C9D2C7"><a href="#zona-este" style="text-decoration: none; color: #0C2A14; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 20px; padding: 20px 0">
+<li style="border-bottom: 1px solid #C9D2C7"><a href="parroquias.html?zona=este" style="text-decoration: none; color: #0C2A14; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 20px; padding: 20px 0">
 <span style="flex: 0 0 96px; display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase"><span aria-hidden="true" style="width: 14px; height: 14px; background: #D8321F; display: inline-block"></span>Este</span>
 <span style="flex: 1 1 200px; font-weight: 500; font-size: 22px">San Miguel Arcángel</span>
 <span style="flex: 1 1 220px; font-size: 16px; font-weight: 400">8 parroquias · Samborondón, La Aurora, Salitre</span>
 </a></li>
-<li style="border-bottom: 1px solid #C9D2C7"><a href="#zona-oeste" style="text-decoration: none; color: #0C2A14; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 20px; padding: 20px 0">
+<li style="border-bottom: 1px solid #C9D2C7"><a href="parroquias.html?zona=oeste" style="text-decoration: none; color: #0C2A14; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 20px; padding: 20px 0">
 <span style="flex: 0 0 96px; display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase"><span aria-hidden="true" style="width: 14px; height: 14px; background: #E0B43C; display: inline-block"></span>Oeste</span>
 <span style="flex: 1 1 200px; font-weight: 500; font-size: 22px">Buen Pastor</span>
 <span style="flex: 1 1 220px; font-size: 16px; font-weight: 400">6 parroquias · Pedro Carbo, Isidro Ayora, Lomas de Sargentillo</span>
@@ -271,16 +250,16 @@ section[id],footer[id],div[id]{scroll-margin-top:92px}
 <section id="agenda" style="max-width: 1200px; margin: 0 auto; padding: 80px 24px 88px; display: flex; flex-wrap: wrap; gap: 24px 64px">
 <div style="flex: 0 1 300px; display: flex; flex-direction: column; gap: 10px">
 <h2 style="margin: 0; font-weight: 700; font-size: clamp(30px, 3.4vw, 44px); letter-spacing: -0.02em; color: #0C2A14">Después de la novena</h2>
-<a href="#agenda-completa" style="font-weight: 500; font-size: 16px; padding: 10px 0">Calendario diocesano 2026</a>
+<a href="agenda.html" style="font-weight: 500; font-size: 16px; padding: 10px 0">Calendario diocesano 2026</a>
 </div>
 <ul style="flex: 1 1 560px; list-style: none; margin: 0; padding: 0">
 <li style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 28px; padding: 18px 0; border-top: 1px solid #C9D2C7">
 <span style="flex: 0 0 150px; font-weight: 700; font-size: 26px; letter-spacing: -0.01em; color: #0C2A14">28 nov</span>
-<span style="flex: 1 1 300px"><a href="#peregrinacion" style="font-weight: 500; font-size: 20px; color: #0C2A14">5.ª Peregrinación Juvenil Diocesana</a><span style="display: block; font-size: 16px; font-weight: 400">Pastoral Juvenil · «Creemos en ti». [LUGAR Y HORA]</span></span>
+<span style="flex: 1 1 300px"><a href="agenda.html" style="font-weight: 500; font-size: 20px; color: #0C2A14">5.ª Peregrinación Juvenil Diocesana</a><span style="display: block; font-size: 16px; font-weight: 400">Pastoral Juvenil · «Creemos en ti». [LUGAR Y HORA]</span></span>
 </li>
 <li style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 28px; padding: 18px 0; border-top: 1px solid #C9D2C7">
 <span style="flex: 0 0 150px; font-weight: 700; font-size: 26px; letter-spacing: -0.01em; color: #0C2A14">12 dic</span>
-<span style="flex: 1 1 300px"><a href="#caravana" style="font-weight: 500; font-size: 20px; color: #0C2A14">Caravana Guadalupana a Daule</a><span style="display: block; font-size: 16px; font-weight: 400">Pastoral Provida. [RECORRIDO Y HORA]</span></span>
+<span style="flex: 1 1 300px"><a href="agenda.html" style="font-weight: 500; font-size: 20px; color: #0C2A14">Caravana Guadalupana a Daule</a><span style="display: block; font-size: 16px; font-weight: 400">Pastoral Provida. [RECORRIDO Y HORA]</span></span>
 </li>
 <li style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 28px; padding: 18px 0; border-top: 1px solid #C9D2C7">
 <span style="flex: 0 0 150px; font-weight: 700; font-size: 26px; letter-spacing: -0.01em; color: #0C2A14">25–27 ene</span>
@@ -368,10 +347,17 @@ section[id],footer[id],div[id]{scroll-margin-top:92px}
 <span style="font-weight: 700; font-size: 21px; letter-spacing: 0.06em">Daule</span>
 </span>
 </a>
-<button type="button" aria-label="Abrir menú" style="width: 48px; height: 48px; background: #FFFFFF; border: 1px solid #0C2A14; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0">
+<button type="button" id="m-boton-menu" aria-label="Abrir menú" aria-expanded="false" aria-controls="m-menu" style="width: 48px; height: 48px; background: #FFFFFF; border: 1px solid #0C2A14; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0">
 <svg aria-hidden="true" width="22" height="16" viewBox="0 0 22 16" fill="none" stroke="#0C2A14" stroke-width="2"><path d="M0 1h22M0 8h22M0 15h22"></path></svg>
 </button>
 </header>
+<nav id="m-menu" hidden aria-label="Principal" style="position: fixed; top: 73px; left: 0; right: 0; z-index: 49; background: #FFFFFF; border-bottom: 3px solid #0C2A14; padding: 6px 20px 14px; display: flex; flex-direction: column">
+<a href="#m-camino" style="text-decoration: none; color: #0C2A14; font-weight: 500; font-size: 20px; padding: 13px 0; border-bottom: 1px solid #E1E6DE">El camino</a>
+<a href="parroquias.html" style="text-decoration: none; color: #0C2A14; font-weight: 500; font-size: 20px; padding: 13px 0; border-bottom: 1px solid #E1E6DE">Parroquias</a>
+<a href="agenda.html" style="text-decoration: none; color: #0C2A14; font-weight: 500; font-size: 20px; padding: 13px 0; border-bottom: 1px solid #E1E6DE">Agenda</a>
+<a href="noticias.html" style="text-decoration: none; color: #0C2A14; font-weight: 500; font-size: 20px; padding: 13px 0; border-bottom: 1px solid #E1E6DE">Noticias</a>
+<a href="#m-diocesis" style="text-decoration: none; color: #0C2A14; font-weight: 500; font-size: 20px; padding: 13px 0">Diócesis</a>
+</nav>
 
 <section id="m-inicio" style="padding: 0 0 26px">
 <div style="position: relative">
@@ -418,7 +404,7 @@ section[id],footer[id],div[id]{scroll-margin-top:92px}
 </section>
 
 <nav aria-label="Accesos rápidos" style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 0 16px 28px">
-<a href="#m-misa" style="text-decoration: none; background: #0A5C1A; color: #FFFFFF; padding: 18px 16px; min-height: 84px; display: flex; flex-direction: column; justify-content: flex-end; font-weight: 500; font-size: 18px; line-height: 1.2">Misa hoy<span style="font-weight: 400; font-size: 14px">cerca de ti</span></a>
+<a href="parroquias.html" style="text-decoration: none; background: #0A5C1A; color: #FFFFFF; padding: 18px 16px; min-height: 84px; display: flex; flex-direction: column; justify-content: flex-end; font-weight: 500; font-size: 18px; line-height: 1.2">Misa hoy<span style="font-weight: 400; font-size: 14px">cerca de ti</span></a>
 <a href="#m-confesion" style="text-decoration: none; background: #E0B43C; color: #0C2A14; padding: 18px 16px; min-height: 84px; display: flex; flex-direction: column; justify-content: flex-end; font-weight: 500; font-size: 18px; line-height: 1.2">Confesarme<span style="font-weight: 400; font-size: 14px">dónde y cuándo</span></a>
 <a href="#m-sacramentos" style="text-decoration: none; background: #3FA2E0; color: #0C2A14; padding: 18px 16px; min-height: 84px; display: flex; flex-direction: column; justify-content: flex-end; font-weight: 500; font-size: 18px; line-height: 1.2">Sacramentos<span style="font-weight: 400; font-size: 14px">requisitos</span></a>
 <a href="#m-ayuda" style="text-decoration: none; background: #D8321F; color: #FFFFFF; padding: 18px 16px; min-height: 84px; display: flex; flex-direction: column; justify-content: flex-end; font-weight: 500; font-size: 18px; line-height: 1.2">Necesito ayuda<span style="font-weight: 400; font-size: 14px">Cáritas y parroquia</span></a>
@@ -492,19 +478,19 @@ section[id],footer[id],div[id]{scroll-margin-top:92px}
 <input type="text" placeholder="Pedro Carbo, La Aurora…" style="font: inherit; font-size: 16px; padding: 15px 14px; border: 1px solid #0C2A14; border-radius: 0; background: #FFFFFF; color: #0C2A14">
 </label>
 <ul style="list-style: none; margin: 18px 0 0; padding: 0">
-<li style="border-top: 1px solid #C9D2C7"><a href="#m-zona-norte" style="text-decoration: none; color: #0C2A14; display: flex; align-items: center; gap: 12px; padding: 14px 0; min-height: 48px">
+<li style="border-top: 1px solid #C9D2C7"><a href="parroquias.html?zona=norte" style="text-decoration: none; color: #0C2A14; display: flex; align-items: center; gap: 12px; padding: 14px 0; min-height: 48px">
 <span aria-hidden="true" style="flex: 0 0 16px; height: 36px; background: #3FA2E0"></span>
 <span style="display: flex; flex-direction: column"><span style="font-weight: 500; font-size: 18px">María Inmaculada</span><span style="font-size: 14px">Zona Norte · 6 parroquias</span></span>
 </a></li>
-<li style="border-top: 1px solid #C9D2C7"><a href="#m-zona-centro" style="text-decoration: none; color: #0C2A14; display: flex; align-items: center; gap: 12px; padding: 14px 0; min-height: 48px">
+<li style="border-top: 1px solid #C9D2C7"><a href="parroquias.html?zona=centro" style="text-decoration: none; color: #0C2A14; display: flex; align-items: center; gap: 12px; padding: 14px 0; min-height: 48px">
 <span aria-hidden="true" style="flex: 0 0 16px; height: 36px; background: #0A5C1A"></span>
 <span style="display: flex; flex-direction: column"><span style="font-weight: 500; font-size: 18px">San José</span><span style="font-size: 14px">Zona Centro · 10 parroquias</span></span>
 </a></li>
-<li style="border-top: 1px solid #C9D2C7"><a href="#m-zona-este" style="text-decoration: none; color: #0C2A14; display: flex; align-items: center; gap: 12px; padding: 14px 0; min-height: 48px">
+<li style="border-top: 1px solid #C9D2C7"><a href="parroquias.html?zona=este" style="text-decoration: none; color: #0C2A14; display: flex; align-items: center; gap: 12px; padding: 14px 0; min-height: 48px">
 <span aria-hidden="true" style="flex: 0 0 16px; height: 36px; background: #D8321F"></span>
 <span style="display: flex; flex-direction: column"><span style="font-weight: 500; font-size: 18px">San Miguel Arcángel</span><span style="font-size: 14px">Zona Este · 8 parroquias</span></span>
 </a></li>
-<li style="border-top: 1px solid #C9D2C7"><a href="#m-zona-oeste" style="text-decoration: none; color: #0C2A14; display: flex; align-items: center; gap: 12px; padding: 14px 0; min-height: 48px">
+<li style="border-top: 1px solid #C9D2C7"><a href="parroquias.html?zona=oeste" style="text-decoration: none; color: #0C2A14; display: flex; align-items: center; gap: 12px; padding: 14px 0; min-height: 48px">
 <span aria-hidden="true" style="flex: 0 0 16px; height: 36px; background: #E0B43C"></span>
 <span style="display: flex; flex-direction: column"><span style="font-weight: 500; font-size: 18px">Buen Pastor</span><span style="font-size: 14px">Zona Oeste · 6 parroquias</span></span>
 </a></li>
@@ -517,15 +503,15 @@ section[id],footer[id],div[id]{scroll-margin-top:92px}
 <div style="padding: 14px 20px 0; display: flex; flex-direction: column; gap: 8px">
 <p style="margin: 0; font-size: 12.5px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #0A5C1A">5 sep 2026 · Pastoral Juvenil</p>
 <h3 style="margin: 0; font-weight: 500; font-size: 22px; line-height: 1.22; color: #0C2A14">«¡La juventud de la Diócesis de Daule es una juventud alegre y llena de esperanza!»</h3>
-<a href="#m-noticias-todas" style="font-weight: 500; padding: 12px 0">Todas las noticias</a>
+<a href="noticias.html" style="font-weight: 500; padding: 12px 0">Todas las noticias</a>
 </div>
 </section>
 
 <section id="m-agenda" style="padding: 0 20px 34px">
 <h2 style="margin: 0 0 6px; font-weight: 700; font-size: 26px; letter-spacing: -0.02em; color: #0C2A14">Después de la novena</h2>
 <ul style="list-style: none; margin: 0; padding: 0">
-<li style="border-top: 1px solid #C9D2C7"><a href="#m-peregrinacion" style="text-decoration: none; color: #0C2A14; display: flex; flex-direction: column; padding: 13px 0; min-height: 48px"><span style="font-weight: 700; font-size: 20px">28 nov</span><span style="font-size: 17px">5.ª Peregrinación Juvenil Diocesana</span></a></li>
-<li style="border-top: 1px solid #C9D2C7"><a href="#m-caravana" style="text-decoration: none; color: #0C2A14; display: flex; flex-direction: column; padding: 13px 0; min-height: 48px"><span style="font-weight: 700; font-size: 20px">12 dic</span><span style="font-size: 17px">Caravana Guadalupana a Daule</span></a></li>
+<li style="border-top: 1px solid #C9D2C7"><a href="agenda.html" style="text-decoration: none; color: #0C2A14; display: flex; flex-direction: column; padding: 13px 0; min-height: 48px"><span style="font-weight: 700; font-size: 20px">28 nov</span><span style="font-size: 17px">5.ª Peregrinación Juvenil Diocesana</span></a></li>
+<li style="border-top: 1px solid #C9D2C7"><a href="agenda.html" style="text-decoration: none; color: #0C2A14; display: flex; flex-direction: column; padding: 13px 0; min-height: 48px"><span style="font-weight: 700; font-size: 20px">12 dic</span><span style="font-size: 17px">Caravana Guadalupana a Daule</span></a></li>
 <li style="border-top: 1px solid #C9D2C7"><a href="#m-asambleas" style="text-decoration: none; color: #0C2A14; display: flex; flex-direction: column; padding: 13px 0; min-height: 48px"><span style="font-weight: 700; font-size: 20px">25–27 ene</span><span style="font-size: 17px">IV Asamblea Diocesana</span></a></li>
 </ul>
 </section>
@@ -601,6 +587,15 @@ section[id],footer[id],div[id]{scroll-margin-top:92px}
   b.addEventListener('click', function () { window.scrollTo(0, 0); });
   function ver() { b.classList.toggle('visible', window.scrollY > 600); }
   window.addEventListener('scroll', ver, { passive: true }); ver();
+})();
+</script>
+<script>
+(function () {
+  var b = document.getElementById('m-boton-menu'), m = document.getElementById('m-menu');
+  function poner(abierto) { m.hidden = !abierto; b.setAttribute('aria-expanded', String(abierto)); b.setAttribute('aria-label', abierto ? 'Cerrar menú' : 'Abrir menú'); }
+  b.addEventListener('click', function () { poner(m.hidden); });
+  m.addEventListener('click', function (e) { if (e.target.closest('a')) poner(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') poner(false); });
 })();
 </script>
 <script src="js/hoja.js"></script>

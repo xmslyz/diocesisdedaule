@@ -1,0 +1,23 @@
+/* Hoja del calendario litúrgico (aspecto de la hoja de Manna) */
+.hoja{background:#F6F3EC;font-family:'Palatino Linotype',Palatino,'Book Antiqua','URW Palladio L',Georgia,serif;color:#221E1A}
+.hoja[hidden]{display:none}
+.hoja-caja{max-width:1200px;margin:0 auto;padding:34px 24px 36px;display:grid;grid-template-columns:minmax(210px,auto) minmax(0,1fr) minmax(0,1.15fr);gap:20px 44px;align-items:center}
+.hoja-dia{text-align:center}
+.hoja-sem{color:#B5191D;font-weight:700;font-size:26px;letter-spacing:.16em;text-transform:uppercase;line-height:1}
+.hoja-num{color:#B5191D;font-weight:700;font-size:112px;line-height:.95}
+.hoja-tiempo{font-size:21px;color:#5A534B;padding-top:4px}
+.hoja-mes,.hoja-rotulo,.tira-dia{font-family:'Roboto',Arial,sans-serif;text-transform:uppercase;letter-spacing:.2em;font-size:12px;font-weight:500;color:#9A9287}
+.hoja-mes{padding-top:5px}
+.hoja-tira{list-style:none;margin:0;padding:14px 0 12px;display:grid;grid-template-columns:repeat(7,1fr);border-top:1.5px solid #D6CEC2;border-bottom:1.5px solid #D6CEC2;text-align:center}
+.hoja-tira li{display:flex;flex-direction:column;align-items:center;gap:7px}
+.tira-num{font-size:23px;line-height:40px;width:40px;height:40px;border-radius:50%}
+.tira-punto{width:8px;height:8px;border-radius:50%}
+.hoja-tira .fuerte .tira-dia,.hoja-tira .fuerte .tira-num{color:#B5191D;font-weight:700}
+.hoja-tira .hoy .tira-num{background:#A98743;color:#FFFFFF;font-weight:700}
+.hoja-cel{text-align:center}
+.hoja-cel p{margin:0}
+.hoja-nombre{font-size:clamp(23px,2.3vw,31px);line-height:1.18;padding:8px 0 4px}
+.hoja-grado{font-style:italic;font-size:19px;color:#5A534B}
+.hoja-nota{font-size:16px;color:#6B645B;padding-top:8px}
+@media (max-width:1000px){.hoja-caja{grid-template-columns:1fr;max-width:560px;gap:22px;padding:30px 22px 32px}}
+@media (max-width:760px){.hoja-num{font-size:96px}.tira-num{font-size:20px;width:36px;height:36px;line-height:36px}.tira-dia{font-size:11px;letter-spacing:.12em}}

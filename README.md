@@ -3,6 +3,9 @@
 Sitio estático de la Diócesis de Daule (Ecuador). En construcción.
 
 - `index.html` — página de inicio (versión para ordenador y versión para teléfono en el mismo archivo).
+- `parroquias.html` — las 30 parroquias con mapa, zonas y buscador; datos en `data/parroquias.json` / `.js`.
+- `agenda.html` — actos de la diócesis (se editan en `data/agenda.js`) junto con las solemnidades y fiestas
+  del calendario litúrgico, que salen solas de LitCal.
 - `noticias.html` — noticias; se llena sola con `data/noticias.js`.
 - `js/hoja.js` — hoja del calendario litúrgico de hoy en la página de inicio. Para probar otro día:
   `index.html?fecha=2026-12-09`.

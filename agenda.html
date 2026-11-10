@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Sitio en construcción: quitar esta línea cuando se publique oficialmente -->
+<meta name="robots" content="noindex, nofollow">
+<title>Agenda · Diócesis de Daule</title>
+<meta name="description" content="Agenda de la Diócesis de Daule: lo que viene en la diócesis y en el calendario litúrgico.">
+<link rel="icon" href="img/escudo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Slab:wght@500;700&display=swap">
+<link rel="stylesheet" href="css/hoja.css">
+<style>
+:root { --verde: #0A5C1A; --oscuro: #0C2A14; --oro: #E0B43C; --texto: #2B312C; --crema: #F6F3EC; }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: 'Roboto', Arial, sans-serif; color: var(--texto); line-height: 1.5; font-size: 17px; background: #FFFFFF; }
+a { color: var(--verde); }
+a:hover { color: var(--oscuro); }
+.ancho { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+header { position: sticky; top: 0; z-index: 50; background: #FFFFFF; border-bottom: 1px solid #E1E6DE; }
+header .ancho { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 10px; padding-bottom: 10px; }
+.marca { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--oscuro); font-family: 'Roboto Slab', serif; font-weight: 700; font-size: 20px; letter-spacing: 0.04em; }
+.marca img { height: 46px; width: auto; }
+header nav { display: flex; gap: 22px; flex-wrap: wrap; }
+header nav a { text-decoration: none; color: var(--oscuro); padding: 12px 0; }
+header nav a[aria-current] { font-weight: 700; border-bottom: 3px solid var(--oro); }
+h1 { margin: 30px 0 8px; font-weight: 700; font-size: clamp(40px, 7vw, 80px); line-height: 0.98; letter-spacing: -0.025em; color: var(--oscuro); }
+.bajada { margin: 0 0 30px; max-width: 600px; }
+h2 { margin: 56px 0 4px; font-weight: 700; font-size: clamp(28px, 3.4vw, 42px); letter-spacing: -0.02em; color: var(--oscuro); line-height: 1.05; }
+.sub { margin: 0 0 14px; max-width: 620px; }
+.leyenda { display: flex; flex-wrap: wrap; gap: 6px 22px; font-size: 14px; margin: 0 0 6px; padding: 0; list-style: none; }
+.leyenda li { display: flex; align-items: center; gap: 8px; }
+.leyenda i { width: 14px; height: 14px; display: inline-block; }
+.acto { display: grid; grid-template-columns: 150px 10px minmax(0, 1fr); gap: 0 22px; border-top: 1px solid #C9D2C7; padding: 16px 0; align-items: start; }
+.acto .cuando { font-weight: 700; font-size: 26px; letter-spacing: -0.01em; color: var(--oscuro); line-height: 1.15; }
+.acto .cuando small { display: block; font-weight: 400; font-size: 14px; letter-spacing: 0; color: var(--texto); text-transform: capitalize; }
+.acto .barra { align-self: stretch; background: var(--verde); }
+.acto h3 { margin: 0; font-size: 21px; font-weight: 500; color: var(--oscuro); line-height: 1.25; }
+.acto p { margin: 2px 0 0; font-size: 16px; }
+.acto.hoy-es h3::after { content: 'hoy'; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; background: var(--oro); color: var(--oscuro); padding: 2px 7px; margin-left: 10px; vertical-align: middle; }
+.acto.liturgia { background: var(--crema); padding-left: 14px; padding-right: 14px; margin: 0 -14px; }
+.acto.liturgia h3, .acto.liturgia .cuando { font-family: 'Palatino Linotype', Palatino, 'Book Antiqua', 'URW Palladio L', Georgia, serif; font-weight: 400; }
+.acto.liturgia .cuando { color: #B5191D; font-weight: 700; }
+.acto.liturgia p { font-style: italic; font-family: 'Palatino Linotype', Palatino, 'Book Antiqua', 'URW Palladio L', Georgia, serif; }
+.meses { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0 40px; padding-bottom: 70px; }
+.mes { border-top: 2px solid var(--oscuro); padding: 12px 0 18px; }
+.mes h3 { margin: 0 0 4px; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; color: var(--verde); }
+.mes ul { margin: 0; padding: 0; list-style: none; }
+.mes li { padding: 4px 0; font-size: 16px; }
+footer { background: var(--oscuro); color: #FFFFFF; }
+footer p { margin: 0; padding: 30px 0; font-family: 'Roboto Slab', serif; font-weight: 500; font-size: clamp(20px, 3vw, 30px); }
+footer span { color: var(--oro); }
+@media (max-width: 760px) {
+  header nav { gap: 12px; font-size: 14px; flex-wrap: nowrap; }
+  .marca span { display: none; }
+  .acto { grid-template-columns: 8px minmax(0, 1fr); gap: 2px 14px; }
+  .acto .cuando { grid-column: 2; font-size: 20px; }
+  .acto .cuando small { display: inline; margin-left: 8px; }
+  .acto .barra { grid-row: 1 / span 2; grid-column: 1; }
+  .acto > div:last-child { grid-column: 2; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="ancho">
+    <a class="marca" href="index.html"><img src="img/escudo.png" alt="Diócesis de Daule"> <span>DIÓCESIS DE DAULE</span></a>
+    <nav aria-label="Principal">
+      <a href="index.html">Inicio</a>
+      <a href="parroquias.html">Parroquias</a>
+      <a href="agenda.html" aria-current="page">Agenda</a>
+      <a href="noticias.html">Noticias</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="ancho">
+    <h1>Agenda</h1>
+    <p class="bajada">Lo que viene en la diócesis y lo que la Iglesia celebra cada día.</p>
+  </div>
+
+  <aside class="hoja" data-hoja hidden aria-label="Calendario litúrgico de hoy"></aside>
+
+  <div class="ancho">
+    <h2>Lo que viene</h2>
+    <p class="sub">Los actos de la diócesis y las solemnidades y fiestas de los próximos tres meses.</p>
+    <ul class="leyenda">
+      <li><i style="background: #0A5C1A"></i>Acto de la diócesis</li>
+      <li><i style="background: #F6F3EC; border: 1px solid #B5191D"></i>Calendario litúrgico (la barra indica el color del día)</li>
+    </ul>
+    <div id="viene"></div>
+
+    <h2>El año de la diócesis</h2>
+    <p class="sub">Lo que solemos vivir juntos cada mes. Las fechas exactas se anuncian en «Lo que viene» y en Noticias.</p>
+    <div class="meses" id="meses"></div>
+  </div>
+</main>
+
+<footer>
+  <div class="ancho"><p>¡Alabado sea Jesucristo! <span>¡Por siempre sea alabado!</span></p></div>
+</footer>
+
+<script src="data/agenda.js"></script>
+<script src="js/hoja.js"></script>
+<script>
+(function () {
+  var MESES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+  var DIAS = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+  var GRADO = { solemnity: 'Solemnidad', feast: 'Fiesta', triduum: 'Triduo Pascual' };
+  var PUNTO = { green: '#2FA84F', white: '#A98743', violet: '#8E3BC9', red: '#D93030', rose: '#E191AE' };
+  var VENTANA = 92;   // días hacia adelante
+
+  function el(tag, clase, texto) {
+    var e = document.createElement(tag);
+    if (clase) e.className = clase;
+    if (texto != null) e.textContent = texto;
+    return e;
+  }
+  function iso(f) { return f.toISOString().slice(0, 10); }
+  function fecha(s) { var a = s.split('-'); return new Date(Date.UTC(+a[0], +a[1] - 1, +a[2])); }
+
+  // Hoy en la hora de Ecuador (o ?fecha=AAAA-MM-DD para probar)
+  var p = {};
+  new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Guayaquil', year: 'numeric', month: '2-digit', day: '2-digit' })
+    .formatToParts(new Date()).forEach(function (x) { p[x.type] = x.value; });
+  var prueba = /^\d{4}-\d{2}-\d{2}$/.exec(new URLSearchParams(location.search).get('fecha') || '');
+  var hoy = fecha(prueba ? prueba[0] : p.year + '-' + p.month + '-' + p.day);
+  var fin = new Date(hoy.getTime() + VENTANA * 86400000);
+
+  // El año de la diócesis
+  var meses = document.getElementById('meses');
+  (window.ANIO_DIOCESANO || []).forEach(function (m) {
+    var caja = el('div', 'mes');
+    caja.appendChild(el('h3', null, m[0]));
+    var ul = el('ul');
+    m[1].forEach(function (t) { ul.appendChild(el('li', null, t)); });
+    caja.appendChild(ul);
+    meses.appendChild(caja);
+  });
+
+  function cuando(d, h) {
+    var c = el('div', 'cuando');
+    var t = d.getUTCDate() + (h && h.getUTCMonth() === d.getUTCMonth() ? '–' + h.getUTCDate() : '') + ' ' + MESES[d.getUTCMonth()];
+    if (h && h.getUTCMonth() !== d.getUTCMonth()) t += ' – ' + h.getUTCDate() + ' ' + MESES[h.getUTCMonth()];
+    c.appendChild(document.createTextNode(t));
+    c.appendChild(el('small', null, (h ? '' : DIAS[d.getUTCDay()] + ' · ') + d.getUTCFullYear()));
+    return c;
+  }
+
+  function pintar() {
+    var filas = [];
+    (window.AGENDA || []).forEach(function (a) {
+      var d = fecha(a.desde), h = a.hasta ? fecha(a.hasta) : null;
+      if ((h || d) < hoy) return;                       // ya pasó
+      filas.push({ d: d, h: h, titulo: a.titulo, detalle: a.detalle, tipo: 'diocesis', orden: 0 });
+    });
+    for (var f = new Date(hoy.getTime()); f <= fin; f = new Date(f.getTime() + 86400000)) {
+      var x = ((window.CALENDARIO || {})[String(f.getUTCFullYear())] || {})[iso(f)];
+      if (!x || !(GRADO[x.t] || x.src)) continue;       // solo solemnidades, fiestas y lo propio
+      var linea = [];
+      if (GRADO[x.t]) linea.push(GRADO[x.t]);
+      if (x.sub) linea.push(x.sub);
+      else if (x.src === 'ec-dau') linea.push('propio de la diócesis');
+      else if (x.src === 'ec') linea.push('propio del Ecuador');
+      filas.push({ d: new Date(f.getTime()), titulo: x.n, detalle: linea.join(' · '), tipo: 'liturgia', color: PUNTO[x.c], orden: 1 });
+    }
+    filas.sort(function (a, b) { return a.d - b.d || a.orden - b.orden; });
+
+    var caja = document.getElementById('viene');
+    caja.textContent = '';
+    filas.forEach(function (r) {
+      var art = el('article', 'acto' + (r.tipo === 'liturgia' ? ' liturgia' : ''));
+      if (r.d <= hoy && (r.h || r.d) >= hoy) art.className += ' hoy-es';
+      art.appendChild(cuando(r.d, r.h));
+      var barra = el('div', 'barra');
+      if (r.tipo === 'liturgia') barra.style.background = r.color || '#A98743';
+      art.appendChild(barra);
+      var cuerpo = el('div');
+      cuerpo.appendChild(el('h3', null, r.titulo));
+      if (r.detalle) cuerpo.appendChild(el('p', null, r.detalle));
+      art.appendChild(cuerpo);
+      caja.appendChild(art);
+    });
+    if (!filas.length) caja.appendChild(el('p', null, 'Pronto anunciaremos los próximos actos.'));
+  }
+
+  // Carga los años del calendario que toca la ventana y pinta
+  var anios = {}; anios[hoy.getUTCFullYear()] = 1; anios[fin.getUTCFullYear()] = 1;
+  var lista = Object.keys(anios), faltan = lista.length;
+  lista.forEach(function (a) {
+    var s = document.createElement('script');
+    s.src = 'data/calendario/daule-' + a + '.js';
+    s.onload = s.onerror = function () { if (--faltan === 0) pintar(); };
+    document.head.appendChild(s);
+  });
+})();
+</script>
+</body>
+</html>
